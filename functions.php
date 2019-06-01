@@ -33,6 +33,47 @@ function retriveAppointment($sql){
 	}
 }
 
+
+
+
+function insert($sql){
+
+	$conn=connect();  /////useing  connect() function 
+if ($conn->query($sql) === TRUE) {
+    echo "<label id='good'>New record created successfully</label>";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+}
+
+
+
+function random_code($string,$v) {
+$pattern = " ";
+$firstPart = strstr(strtolower($string), $pattern, true);
+$secondPart = substr(strstr(strtolower($string), $pattern, false), 0,3);
+$nrRand = rand(0, 100);
+
+$username = trim($firstPart).trim($secondPart).trim($nrRand);
+return $string.$username.$v;
+}
+
+
+
+function ret($sql){
+
+$query = mysqli_query($conn, $sql);
+
+if (!$query) {
+	die ('SQL Error: ' . mysqli_error($conn));
+}else{
+ return $query;
+}
+
+}
+
+
 /*
 
 
