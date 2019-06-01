@@ -3,7 +3,7 @@ function connect(){
 	$servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "id9297680_nursery";
+$dbname = "";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
