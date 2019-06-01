@@ -10,7 +10,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 	
 	$sql = 'SELECT name
-		FROM lab WHERE patientid="'.$_COOKIE['id'].'"';
+		FROM lab';
 		
 	$labs=ret($sql);
 	?>

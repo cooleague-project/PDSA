@@ -1,19 +1,37 @@
-<?php 
+<?php
 function connect(){
 	$servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "";
+$dbname = "pdsa";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn) {
-	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
+	die ('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 	return $conn;
 }
 
+function insertAppointment($sql){
 
+	$conn=connect();  /////useing  connect() function
+if ($conn->query($sql) === TRUE) {
+    echo "<label id='good'>New record created successfully</label>";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+}
+function retriveAppointment($sql){
+
+		$conn=connect();  /////useing  connect() function
+	if ($conn->query($sql) === TRUE) {
+	    echo "<label id='good'>New record created successfully</label>";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+}
 
 /*
 
@@ -24,14 +42,14 @@ if (!$conn) {
 
 
 
-////////insert function 
+////////insert function
 
 
 ////////// $sql is your qeury as string like $sql=	"INSERT INTO table1 ...."
 
 function insert($sql){
 
-	$conn=connect();  /////useing  connect() function 
+	$conn=connect();  /////useing  connect() function
 if ($conn->query($sql) === TRUE) {
     echo "<label id='good'>New record created successfully</label>";
 } else {
@@ -47,7 +65,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 
-//////// retrive function   
+//////// retrive function
 
 
 
@@ -75,9 +93,9 @@ if (!$query) {
 <?php
 		$no 	= 1;
 
-		while ($row = mysqli_fetch_array($query))///////$query is the retun from ret function 
+		while ($row = mysqli_fetch_array($query))///////$query is the retun from ret function
 		{
-			
+
 			echo '<tr>
 					<td>'.$no.'</td>
 					<td>'.$row['cname'].'<a href=approve.php?id='.$row['id'].' >  <strong>Approve </strong></a>&nbsp;&nbsp;<a href=delete.php?id='.$row['id'].' >  <strong>Delete </strong></a></td>
@@ -89,7 +107,7 @@ if (!$query) {
 
 
 				</tr>';
-			
+
 			$no++;
 		}?>*/
 
