@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="fav.png" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<form action="server/personalLic.php" method="get">
+  <!--name-->
+  <div class="form-group row">
+    <label for="firstname" class="col-md-2 col-12  col-form-label"> الاسم رباعى<span>:</span> </label>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="firstname" name="firstname" placeholder="الاول" required oninvalid="">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="secondname" name="secondname" placeholder="الثانى" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="thirdname" name="thirdname" placeholder="الثالث" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="fourthname" name="fourthname" placeholder="الرابع" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+  </div>
+  <!--birthday-->
+  <div class="form-group row">
+    <label for="firstname" class="col-md-2 col-form-label">تاريخ الميلاد<span>:</span> </label>
+    <div class="col-md-2">
+      <input type="text" class="form-control" name="day" placeholder="اليوم" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="month" name="month" placeholder="الشهر" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="year" name="year" placeholder="السنه" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+  </div>
+  <!--birthlocation-->
+  <div class="form-group row">
+    <label for="firstname" class="col-md-2 col-form-label">محل الميلاد<span>:</span> </label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" id="birthlocation" name="birthlocation" placeholder="محل الميلاد" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+  </div>
+  <!--Gender-->
+
+  <div class="form-group row">
+    <label for="telnum" class="col-12 col-md-2 col-form-label">النوع:</label>
+
+    <div class="col-2 col-md-2">
+      <input type="radio" name="radio" value="radio1" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+      <label for="male" class="col-12 col-md-2 col-form-label">ذكر</label>
+    </div>
+
+    <div class="col-2 col-md-2">
+      <input type="radio" name="radio" value="radio2" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+      <label for="female" class="col-12 col-md-2 col-form-label">انثى</label>
+    </div>
+
+
+  </div>
+  <!--Nationalid-->
+  <div class="form-group row">
+    <label for="email" class="col-md-2 col-form-label">الرقم القومى</label>
+    <div class="col-md-5">
+      <input type="text" class="form-control" id="nationalid" name="nationalid" placeholder="الرقم القومى" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+  </div>
+  <!--Mobile-->
+  <div class="form-group row">
+    <label for="telnum" class="col-12 col-md-2 col-form-label">رقم المحمول</label>
+    <div class="col-5 col-md-5">
+      <input type="te" class="form-control" id="telnum" name="telnum" placeholder="رقم المحمول" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+  </div>
+  <!--address-->
+  <div class="form-group row">
+    <label for="telnum" class="col-12 col-md-2 col-form-label">العنوان :</label>
+
+    <div class="col-9 col-md-9">
+      <input type="text" class="form-control" id="address2" name="address" placeholder="عنوان 2" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+    </div>
+  </div>
+  <!--relegion-->
+  <div class="form-group row">
+    <label class="col-12 col-md-2 col-form-label">الديانه</label>
+    <div class="btn-group ">
+      <select name="relegion">
+        <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          مسلم
+        </button>
+        <div class="dropdown-menu">
+
+          <option value="1" class="dropdown-item">مسلم</option>
+          <option value="2" class="dropdown-item">مسيحى</option>
+        </div>
+      </select>
+    </div>
+  </div>
+  <!--Traffic location-->
+
+  <div class="form-group row">
+    <label class="col-12 col-md-2 col-form-label">وحده الترخيص </label>
+    <div class="btn-group ">
+      <select name="trafficlocation">
+        <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        </button>
+        <div class="dropdown-menu">
+
+          <option value="1" class="dropdown-item">البساتين </option>
+          <option value="2" class="dropdown-item">المعادى </option>
+          <option value="2" class="dropdown-item">حلوان </option>
+        </div>
+      </select>
+    </div>
+  </div>
+  <!--identification types-->
+
+  <div class="form-group row">
+    <label class="col-12 col-md-2 col-form-label">نوع بطاقه التعريف</label>
+    <div class="btn-group ">
+      <select name="idcard">
+        <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">بطاقه </button>
+        <div class="dropdown-menu">
+
+          <option value="1" class="dropdown-item">بطاقه</option>
+          <option value="2" class="dropdown-item">جواز سفر</option>
+        </div>
+      </select>
+    </div>
+  </div>
+
+
+  <!--send button-->
+
+  <div class="offset-md-2 col-md-10">
+    <button type="submit" class="btn btn-primary">ارسال </button>
+  </div>
+
+</form>
+</div>
+
+
+  <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
