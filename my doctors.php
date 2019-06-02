@@ -9,10 +9,10 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 	
-	$sql = 'SELECT name
-		FROM lab WHERE patientid="'.$_COOKIE['id'].'"';
+	$sql = 'SELECT name,field 
+		FROM doctor WHERE patientid="'.$_COOKIE['id'].'"';
 		
-	$labs=ret($sql);
+	$doctors=ret($sql);
 	?>
 	
 	
@@ -29,7 +29,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>My labs</title>
+    <title>My Doctors</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -63,8 +63,8 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>My Labs</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="My labs.php">My Labs</a>
+                    <h1>My Doctors</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="My Doctors.php">My Doctors</a>
                 </div>
             </div>
         </div>
@@ -76,14 +76,14 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	
 <center>
 
-	<h1>Labs</h1>
+	<h1>Doctors</h1>
 	<table class="data-table">
-		<caption class="title">Labs DB</caption>
+		<caption class="title">Doctors DB</caption>
 		<thead>
 			<tr>
 				<th>NO</th>
-				<th>Lab NAME</th>
-
+				<th>Doctor NAME</th>
+				<th>Doctor Field</th>
 
 			</tr>
 		</thead>
@@ -91,12 +91,13 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 <?php
 		$no 	= 1;
 
-		while ($Lrow = mysqli_fetch_array($labs))///////$query is the retun from ret function 
+		while ($Drow = mysqli_fetch_array($doctors))///////$query is the retun from ret function 
 		{
 			
 			echo '<tr>
 					<td>'.$no.'</td>
-					<td>'.$Lrow['name'].'</td>
+					<td>'.$Drow['name'].'</td>
+					<td>'.$Drow['field'].'</td>
 					
 
 
