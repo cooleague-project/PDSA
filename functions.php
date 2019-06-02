@@ -62,7 +62,7 @@ return $string.$username.$v;
 
 
 function ret($sql){
-
+$conn=connect();  /////useing  connect() function
 $query = mysqli_query($conn, $sql);
 
 if (!$query) {
