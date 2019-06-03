@@ -10,7 +10,8 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
 	$sql = 'SELECT appointment
-		FROM doctor';
+		FROM doctor
+		WHERE patientid="'.$_COOKIE['id'].'"';
 
 	$labs=retriveAppointment($sql);
 	?>
@@ -63,8 +64,8 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>My Labs</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="My labs.php">My Labs</a>
+                    <h1>My Appointments</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="retriveAppointment.php">My Appointments</a>
                 </div>
             </div>
         </div>
@@ -82,7 +83,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		<thead>
 			<tr>
 				<th>NO</th>
-				<th>Lab NAME</th>
+				<th>Appointment Date</th>
 
 
 			</tr>

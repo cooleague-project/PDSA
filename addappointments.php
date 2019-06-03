@@ -1,3 +1,24 @@
+
+<?php
+function addappointments(){
+if (isset($_COOKIE['PrivatePageCode'])){
+
+		include 'functions.php';
+	$conn=connect();
+  $day=$_POST["day"];
+  $month=$_POST["month"];
+  $year=$_POST["year"];
+  $appointment=$day.'-'.$month.'-'.$year;
+
+	$sql = "INSERT INTO  doctor(appointment)
+              VALUES('$appointment')
+          WHERE  id ='".$_COOKIE['id']."'";
+
+insertAppointment($sql);
+}
+}
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -164,21 +185,5 @@
           <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
           <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<?php
-
-		include 'functions.php';
-	$conn=connect();
-  $day=$_POST["day"];
-  $month=$_POST["month"];
-  $year=$_POST["year"];
-  $appointment=$day.'-'.$month.'-'.$year;
-
-	$sql = "INSERT INTO  doctor(appointment)
-              VALUES('$appointment')  ";
-
-insertAppointment($sql);
-
-
- ?>
     </body>
     </html>
