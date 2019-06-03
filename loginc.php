@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
 
 	include 'functions.php';
 	$conn=connect();
-	$sql="SELECT id FROM patient WHERE doctorC='".$_POST['Code']."' OR labC='".$_POST['Code']."' OR hospitalC='".$_POST['Code']."'" ;
+	$sql="SELECT id,doctorC,labC,hospitalC FROM patient WHERE doctorC='".$_POST['Code']."' OR labC='".$_POST['Code']."' OR hospitalC='".$_POST['Code']."'" ;
 $usr=ret($sql);
 $row = mysqli_fetch_array($usr);
 if($_POST['Code']==$row['doctorC']||$_POST['Code']==$row['labC']||$_POST['Code']==$row['hospitalC']){
