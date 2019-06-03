@@ -209,7 +209,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 					<td>'.$no.'</td>
 					<td>'.$medicalrow['name'].'</td>
 					<td>'.$medicalrow['byWho'].'</td>
-					<td>'.$medicalrow['reportLink'].'</td>
+					<td><a href="/reports/'.$medicalrow['reportLink'].'">Download the report</a></td>
 
 
 				</tr>';
