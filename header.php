@@ -25,23 +25,168 @@
             <div class="container">
                 <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.html"><img src="assets/images/logo/logo.png" alt="" title="" /></a>
+                    <a href="index.php"><img src="assets/images/logo/logo.png" alt="" title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li class="menu-active"><a href="index.html">Home</a></li>
+                       <?php 
+					   
+					   
+					   
+					   
+					   if (isset($_COOKIE['PrivatePageLogin'])) {
+include_once 'functions.php';
+
+
+$conn = connect();
+	
+	
+	
+	
+	
+
+
+	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
+	$usr=ret($sql);
+	$usrrow = mysqli_fetch_array($usr);
+	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
+		
+								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
                        
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
-                                <li><a href="about.html">about us</a></li>
-                                
-								<li><a href="xray.html">XRay Scan</a></li>
+                                <li><a href="my reports.php">My Reports</a></li>
+								<li><a href="retriveAppointments.php">My Appointments</a></li>
+								<li><a href="retpresc.php">My Prescrtiption</a></li>
+								<li><a href="my doctors.php">My Doctors</a></li>
+								<li><a href="my labs.php">My Labs</a></li>
+								<li><a href="my reports.php">my reports</a></li>
+                                <li><a href="my surgery detials.php">My Surgery Detials</a></li>
+								<li><a href="xray.php">XRay Scan</a></li>
+								<li><a href="upload my reports.php">Upload My Reports</a></li>
                             </ul>
                         </li>
                      
-                        <li><a href="contact.html">Contact</a></li>	
-						<li><a href="departments.html">Login</a></li>
-                        <li><a href="departments.html">register</a></li>						
+                        <li><a href="contact.php">Contact</a></li>	
+						<li><a href="logout.php">Logout</a></li>
+                       ';
+		
+	}
+						   
+						   
+					   }else if(isset($_COOKIE['PrivatePageCode'])){
+						   
+						   
+						   
+						   include_once 'functions.php';
+
+
+$conn = connect();
+	
+	
+	
+	
+	
+
+
+	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
+	$usr=ret($sql);
+	$usrrow = mysqli_fetch_array($usr);
+	if($usrrow['doctorC']==$_COOKIE['PrivatePageCode']){
+		
+								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
+                       
+                        <li class="menu-has-children"><a href="">Pages</a>
+                            <ul>
+                                <li><a href="add report.php">Add Report</a></li>
+								<li><a href="addappointments.php">Add Appointments</a></li>
+								<li><a href="addpresc.php">Add Prescrtiption</a></li>
+								<li><a href="see the pationet history.php">See The Pationet History</a></li>
+								
+                            </ul>
+                        </li>
+                     
+                        <li><a href="contact.php">Contact</a></li>	
+						<li><a href="logout.php">Logout</a></li>
+                       ';
+	}else if ($usrrow['labC']==$_COOKIE['PrivatePageCode']){
+								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
+                       
+                        <li class="menu-has-children"><a href="">Pages</a>
+                            <ul>
+                                  <li><a href="add report.php">Add Report</a></li>
+								<li><a href="addappointments.php">Add Appointments</a></li>
+								<li><a href="see the pationet history.php">See The Pationet History</a></li>
+								
+                            </ul>
+                        </li>
+                     
+                        <li><a href="contact.php">Contact</a></li>	
+						<li><a href="logout.php">Logout</a></li>
+                       ';
+		
+	}else if ($usrrow['hospitalC']==$_COOKIE['PrivatePageCode']){
+								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
+                       
+                        <li class="menu-has-children"><a href="">Pages</a>
+                            <ul>
+                                 <li><a href="add report.php">Add Report</a></li>
+								<li><a href="addappointments.php">Add Appointments</a></li>
+								<li><a href="addpresc.php">Add Prescrtiption</a></li>
+								<li><a href="add surgery detials.php">Add Surgery Detials</a></li>
+								<li><a href="see the pationet history.php">See The Pationet History</a></li>
+								
+                            </ul>
+                        </li>
+                     
+                        <li><a href="contact.php">Contact</a></li>	
+						<li><a href="logout.php">Logout</a></li>
+                       ';
+		
+	}else{
+		
+		echo "Bad Cookie.";
+      exit;
+	}
+	
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+					   }else{
+						   
+						   
+						   
+						   
+						    echo'<li class="menu-active"><a href="index.php">Home</a></li>
+                       
+                        <li class="menu-has-children"><a href="">Pages</a>
+                            <ul>
+                                <li><a href="about.php">about us</a></li>
+                                
+								<li><a href="xray.php">XRay Scan</a></li>
+                            </ul>
+                        </li>
+                     
+                        <li><a href="contact.php">Contact</a></li>	
+						<li><a href="login.php">Login</a></li>
+                        <li><a href="reg.php">register</a></li>	';
+						   
+						   
+						   
+					   }
+					   
+					   
+					  	?>				
                     </ul>
                 </nav><!-- #nav-menu-container -->		    		
                 </div>
