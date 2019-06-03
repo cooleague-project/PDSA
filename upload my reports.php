@@ -125,7 +125,7 @@ echo $statusMsg;
 		 <!-- the conetent -->
 		
 		<form action="" method="post" enctype="multipart/form-data">
-    Select Image File to Upload:
+    Select  File to Upload:
 	
     <input type="file" name="file">
     <input type="submit" name="submit" value="Upload">
