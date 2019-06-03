@@ -1,8 +1,18 @@
 
 <?php
 // Include the database configuration file
-include 'functions.php';
+
+
+if (isset($_COOKIE['PrivatePageLogin'])) {
+		include 'functions.php';
 	$conn=connect();
+	
+	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
+	$usr=ret($sql);
+	$usrrow = mysqli_fetch_array($usr);
+	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
+	
+
 $statusMsg = '';
 
 // File upload path
@@ -22,8 +32,8 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         // Upload file to server
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-			$sql="INSERT into medicalR (name,byWho,reportLink,patientid) VALUES ('name','pationet','".$fileName."',2)";
-			//insert($sql);
+			$sql="INSERT into medicalR (name,byWho,reportLink,patientid) VALUES ('".$_POST['name']."','".$_POST['byWho']."','".$fileName."','".$_COOKIE['id']."')";
+			
             $insert = $conn->query($sql);
             if($insert){
                 $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
@@ -76,7 +86,7 @@ echo $statusMsg;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>Registration</title>
+    <title>Upload MY Report</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -110,8 +120,8 @@ echo $statusMsg;
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Registration</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="reg.php">Registration</a>
+                    <h1>Upload MY Report</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="upload my reports.php">Upload MY Report</a>
                 </div>
             </div>
         </div>
@@ -126,7 +136,14 @@ echo $statusMsg;
 		
 		<form action="" method="post" enctype="multipart/form-data">
     Select  File to Upload:
-	
+	<div>
+			<label  for="form-username">Reprot Name</label>
+			<input  type="text" name="name" placeholder="Reprot name..." >
+	</div>
+	<div>
+			<label  for="form-username">Your Name</label>
+			<input  type="text" name="byWho" placeholder="Your Name..." >
+	</div>
     <input type="file" name="file">
     <input type="submit" name="submit" value="Upload">
 </form>
@@ -157,3 +174,22 @@ echo $statusMsg;
 </body>
 </html>
 	
+	
+	
+<?php
+
+}else{
+	   
+	  echo "You are not patient";
+      exit;
+	   
+   }
+
+   }else {
+	echo "You are not patient";
+      exit;
+	   
+	
+}
+
+	?>
