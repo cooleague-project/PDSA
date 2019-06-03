@@ -24,11 +24,6 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 	$medicalR=ret($sql);		
 	
 		
-	}else{
-		 echo "You are not Doctor";
-      exit;
-		
-	}
 	
  
 	?>
@@ -118,8 +113,11 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 
 	<h1>Doctors</h1>
 	<table class="data-table">
-		<caption class="title">Doctors DB</caption>
+		
 		<thead>
+			<tr>
+			<th>Doctors Prescriptions</th>
+			</tr>
 			<tr>
 				<th>NO</th>
 				<th>Doctor NAME</th>
@@ -132,13 +130,11 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 		</thead>
 		<tbody>
 		
-					<tr>
-				<th>Doctors Prescriptions</th>
-				</tr>
+
 <?php
 		$no 	= 1;
 
-		while ($Drow = mysqli_fetch_array($doctors))///////$query is the retun from ret function 
+		while ($Drow = mysqli_fetch_array($doctor))///////$query is the retun from ret function 
 		{
 			
 			echo '<tr>
@@ -154,12 +150,19 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 			$no++;
 		}?>
 		
-		
-		
+		</tbody>
+		</table>
+		<table class="data-table">
 				<thead>
 		
 										<tr>
 				<th>Hospital's Doctors Prescriptions</th>
+				</tr>
+				<tr>
+				<th>NO</th>
+				<th>Doctor NAME</th>
+				<th>Doctor Field</th>
+				<th>Doctor Prescriptions</th>
 				</tr>
 		</thead>
 
@@ -182,6 +185,9 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 			$no++;
 		}?>
 		
+		</tbody>
+		</table>
+		<table class="data-table">
 		<thead>
 							<tr>
 	
@@ -246,3 +252,22 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 </body>
 </html>
 	
+
+	
+<?php
+
+}else{
+	   
+	  echo "You are not Doctor";
+      exit;
+	   
+   }
+
+   }else {
+	echo "You are not Doctor";
+      exit;
+	   
+	
+}
+
+	?>
