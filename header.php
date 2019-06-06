@@ -64,6 +64,8 @@ $conn = connect();
                                 <li><a href="my surgery detials.php">My Surgery Detials</a></li>
 								<li><a href="xray.php">XRay Scan</a></li>
 								<li><a href="upload my reports.php">Upload My Reports</a></li>
+								<li><a href="pationet codes.php">Pationet Codes</a></li>
+								
                             </ul>
                         </li>
                      
