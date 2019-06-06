@@ -9,11 +9,16 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
-	$sql = 'SELECT appointment
+	$sql = 'SELECT *
 		FROM doctor
 		WHERE patientid="'.$_COOKIE['id'].'"';
 
-	$labs=retriveAppointment($sql);
+	$appoitment=retriveAppointment($sql);
+	$sql = 'SELECT *
+		FROM hdoctor
+		WHERE patientid="'.$_COOKIE['id'].'"';
+		$hospitalAppoitment=retriveAppointment($sql2);
+
 	?>
 
 
@@ -30,7 +35,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>My labs</title>
+    <title>My appointments</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -77,12 +82,14 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 <center>
 
-	<h1>Labs</h1>
+	<h1>Appointments</h1>
 	<table class="data-table">
-		<caption class="title">Labs DB</caption>
+		<caption class="title">Doctors Appointments </caption>
 		<thead>
 			<tr>
 				<th>NO</th>
+				<th>Doctor Name</th>
+				<th>Doctor Field</th>
 				<th>Appointment Date</th>
 
 
@@ -92,19 +99,60 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 <?php
 		$no 	= 1;
 
-		while ($Lrow = mysqli_fetch_array($labs))///////$query is the retun from ret function
+		while ($Lrow = mysqli_fetch_array($hospitalAppoitment))///////$query is the retun from ret function
 		{
 
 			echo '<tr>
 					<td>'.$no.'</td>
+					      <td>'.$Lrow['name'].'</td>
+								<td>'.$Lrow['field'].'</td>
 					<td>'.$Lrow['appointment'].'</td>
-
 
 
 				</tr>';
 
 			$no++;
 		}?>
+
+
+		</
+		</tbody>
+
+	</table>
+	<h1>Appointments</h1>
+	<table class="data-table">
+		<caption class="title">Hospital Doctors Appointments </caption>
+		<thead>
+			<tr>
+				<th>NO</th>
+				<th>Doctor Name</th>
+				<th>Doctor Field</th>
+				<th>Appointment Date</th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+<?php
+		$no 	= 1;
+
+		while ($Lrow = mysqli_fetch_array($appoitment))///////$query is the retun from ret function
+		{
+
+			echo '<tr>
+					<td>'.$no.'</td>
+					      <td>'.$Lrow['name'].'</td>
+								<td>'.$Lrow['field'].'</td>
+					<td>'.$Lrow['appointment'].'</td>
+
+
+				</tr>';
+
+			$no++;
+		}?>
+
+
+		</
 		</tbody>
 
 	</table>
