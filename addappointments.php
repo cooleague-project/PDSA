@@ -1,31 +1,49 @@
-
 <?php
-function addappointments(){
-if (isset($_COOKIE['PrivatePageCode'])){
 
+if (isset($_COOKIE['PrivatePageCode'])){
 		include 'functions.php';
 	$conn=connect();
-  $day=$_POST["day"];
-  $month=$_POST["month"];
-  $year=$_POST["year"];
-  $appointment=$day.'-'.$month.'-'.$year;
-
+ 
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=ret($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['labC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
-
-			$sql2= "INSERT INTO doctor (appointment)
-			VALUES ('$appointment') ";
+		if(isset($_POST['submit'])){
+			
+		if($_POST['name']&&$_POST['field']&&$_POST['day']&&$_POST['month']&&$_POST['year']){
+			
+			
+			 $day=$_POST["day"];
+  $month=$_POST["month"];
+  $year=$_POST["year"];
+  $appointment=$day.'-'.$month.'-'.$year;
+		if($usrrow['doctorC']==$_COOKIE['PrivatePageCode']){
+			$sql2= "INSERT INTO doctor (name,field,appointment,patientid)
+			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_COOKIE['id']."') ";
 			insertAppointment($sql2);
 
-		}
-		else{
-			echo"nonono";
-		}
+			}else if ($usrrow['hospitalC']==$_COOKIE['PrivatePageCode']){
+			$sql2= "INSERT INTO Hdoctor (name,field,appointment,patientid)
+			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_COOKIE['id']."') ";
+			insertAppointment($sql2);
 
-}
-}
+			}else if ($usrrow['labC']==$_COOKIE['PrivatePageCode']){
+				$sql2= "INSERT INTO lab (name,appointment,patientid)
+			VALUES ('".$_POST['name']."','".$appointment."','".$_COOKIE['id']."') ";
+			insertAppointment($sql2);
+
+			}else{
+					
+					echo "Bad Cookie.";
+				  exit;
+				}	
+			
+		}
+		
+			}
+		
+
+
 
  ?>
 <!DOCTYPE html>
@@ -138,7 +156,7 @@ if (isset($_COOKIE['PrivatePageCode'])){
 
           </div>
         </section>
-        <form method="post" actio="addappointments()">
+        <form method="post" action="">
           <div class="form-group row">
             <label for="firstname" class="col-md-2">Appointment date<span>:</span> </label>
             <div class="col-md-2">
@@ -151,11 +169,25 @@ if (isset($_COOKIE['PrivatePageCode'])){
               <input type="text" class="form-control"  name="year" placeholder="Year" required oninvalid="this.setCustomValidity('please fill this field')">
             </div>
           </div>
+
+		  
+          <div class="form-group row">
+            <label for="firstname" class="col-md-2">Doctor Detials<span>:</span> </label>
+            <div class="col-md-2">
+              <input type="text" class="form-control" name="name" placeholder="Doctor Name " required oninvalid="this.setCustomValidity('please fill this field')">
+            </div>
+
+			            <div class="col-md-2">
+              <input type="text" class="form-control" name="field" placeholder="Doctor field " required oninvalid="this.setCustomValidity('please fill this field')">
+            </div>
+          </div>
+		  
+		  
            <div class="row">
 
 
             <div class="offset-md-6">
-              <button type="submit" class="btn btn-primary">Add </button>
+              <button type="submit" class="btn btn-primary" name="submit">Add </button>
             </div>
           </div>
         </form>
@@ -177,10 +209,7 @@ if (isset($_COOKIE['PrivatePageCode'])){
 
         <!-- Footer Area Starts -->
         <?php  include"footer.php"?>
-
         <!-- Footer Area End -->
-
-
         <!-- Javascript -->
         <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     	<script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>
@@ -193,6 +222,26 @@ if (isset($_COOKIE['PrivatePageCode'])){
           <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
           <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
           <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
     </body>
     </html>
+	
+	
+	
+	
+	<?php
+
+}else{
+	   
+	  echo "You are not Authrized";
+      exit;
+	   
+   }
+
+   }else {
+	echo "You are not Authrized";
+      exit;
+	   
+	
+}
+
+	?>
