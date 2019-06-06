@@ -138,7 +138,7 @@ insert($sql);
 			                    		<label class="sr-only" for="form-username">Birthdate</label>
 			                        	<input id="user" type="text" name="birthdate" placeholder="birthdate... like ****/**/**" class="form-username form-control" required>
 			                        </div>
-									<button name="submit" id="submit" type="submit" class="btn">Sign in!</button>
+									<button name="submit" id="submit" type="submit" class="btn">Sign Up!</button>
 									
 			                        
 			                    </form>
