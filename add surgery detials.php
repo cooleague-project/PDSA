@@ -3,32 +3,32 @@
 if (isset($_COOKIE['PrivatePageCode'])) {
 	include 'functions.php';
 	$conn=connect();
-	
+
 	$sql = "SELECT hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=ret($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if($usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
-		
-	
-		
+
+
+
 		if(isset($_POST['submit'])){
-			
+
 		if($_POST['name']&&$_POST['field']&&$_POST['day']&&$_POST['month']&&$_POST['year']&&$_POST['tests']){
-			
-			
+
+
 			 $day=$_POST["day"];
   $month=$_POST["month"];
   $year=$_POST["year"];
-  $appointment=$day.'-'.$month.'-'.$year;
-  
+  $appointment=concate($day,$month,$year);
+
   $sql2= "INSERT INTO Hdoctor (name,field,surgeryTestTime,surgeryTests,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_POST['tests']."','".$_COOKIE['id']."') ";
 			insert($sql2);
-  
-  
+
+
 		}}
-		
-		
+
+
 		?>
 
 
@@ -42,8 +42,8 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 
 
 
-	
-	
+
+
 <!DOCTYPE html>
 
 <head>
@@ -68,13 +68,13 @@ if (isset($_COOKIE['PrivatePageCode'])) {
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
-    <link rel="stylesheet" href="assets/css/style.css">  
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-    <link rel="stylesheet" href="styles.css">	
+    <link rel="stylesheet" href="styles.css">
 
-        
+
 <link rel="stylesheet" href="ret.css" />
 </head>
 <body>
@@ -86,9 +86,9 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 
 	    <!-- Header Area Starts -->
     <?php  include"header.php"?>
-	
+
     <!-- Header Area End -->
-	
+
 		<!-- Banner Area Starts -->
     <section class="banner-area other-page">
         <div class="container">
@@ -105,7 +105,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
     <section class="welcome-area section-padding">
         <div class="container">
 
-		
+
 		 <!-- the conetent -->
 
         <form method="post" action="">
@@ -121,7 +121,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
               <input type="text" class="form-control"  name="year" placeholder="Year" required oninvalid="this.setCustomValidity('please fill this field')">
             </div>
           </div>
-		  
+
           <div class="form-group row">
             <label for="firstname" class="col-md-2">Surgery Tests<span>:</span> </label>
             <div class="col-md-2">
@@ -130,8 +130,8 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 
           </div>
 
-		 
-		  
+
+
           <div class="form-group row">
             <label for="firstname" class="col-md-2">Doctor Detials<span>:</span> </label>
             <div class="col-md-2">
@@ -142,8 +142,8 @@ if (isset($_COOKIE['PrivatePageCode'])) {
               <input type="text" class="form-control" name="field" placeholder="Doctor field " required oninvalid="this.setCustomValidity('please fill this field')">
             </div>
           </div>
-		  
-		  
+
+
            <div class="row">
 
 
@@ -154,12 +154,12 @@ if (isset($_COOKIE['PrivatePageCode'])) {
         </form>
 
 
-		 
+
 
 		 <!-- the conetent -->
-		
-		
-		
+
+
+
   </div>
     </section>
 	  <!-- Welcome Area End -->
@@ -180,24 +180,22 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 </body>
 </html>
 
-	
-	
+
+
 <?php
 
 }else{
-	   
+
 	  echo "You are not patient";
       exit;
-	   
+
    }
 
    }else {
 	echo "You are not patient";
       exit;
-	   
-	
+
+
 }
 
 	?>
-
-	
