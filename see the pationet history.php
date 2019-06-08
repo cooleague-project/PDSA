@@ -49,7 +49,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 
 
 <!DOCTYPE html>
-
+<html>
 <head>
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -165,7 +165,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 				<th>Doctor Prescriptions</th>
 				</tr>
 		</thead>
-
+            <tbody><tbody>
 		<?php
 		
 
@@ -202,7 +202,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 				</tr>
 				
 		</thead>
-		
+		<tbody>
 		
 				
 		<?php

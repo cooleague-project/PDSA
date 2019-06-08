@@ -14,9 +14,9 @@ if (isset($_COOKIE['PrivatePageCode'])){
 			
 			
 			 $day=$_POST["day"];
-  $month=$_POST["month"];
-  $year=$_POST["year"];
-  $appointment=$day.'-'.$month.'-'.$year;
+             $month=$_POST["month"];
+             $year=$_POST["year"];
+             $appointment=$day.'-'.$month.'-'.$year;
 		if($usrrow['doctorC']==$_COOKIE['PrivatePageCode']){
 			$sql2= "INSERT INTO doctor (name,field,appointment,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_COOKIE['id']."') ";

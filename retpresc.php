@@ -1,18 +1,28 @@
 <?php
+if (isset($_COOKIE['PrivatePageLogin'])) {
+		include 'functions.php';
+	$conn=connect();
 
+	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
+	$usr=ret($sql);
+	$usrrow = mysqli_fetch_array($usr);
+	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
-		require 'functions.php';
-	
-    $id=$_GET["patientid"];
-	$sql = "SELECT prescription
-		FROM doctor
-        where patientid=$id";
+   $sql = 'SELECT name,field,prescription 
+		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'"';
 		
-	$presc=ret($sql);
+	$doctor=ret($sql);
+
+		$sql = 'SELECT name,field,prescription 
+		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'"';
+		
+	$Hdoctor=ret($sql);	
 	?>
 	
 	
-	
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +35,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>My labs</title>
+    <title>Registration</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -59,8 +69,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>My Labs</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="My labs.php">My Labs</a>
+                    <h1>Registration</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="reg.php">Registration</a>
                 </div>
             </div>
         </div>
@@ -69,30 +79,45 @@
 		<!-- Welcome Area Starts -->
     <section class="welcome-area section-padding">
         <div class="container">
-	
-<center>
 
-	<h1>prescription</h1>
+		
+		 <!-- the conetent -->
+		
+		
+		<center>
+
+	<h1>Doctors</h1>
 	<table class="data-table">
-		<caption class="title">doctor DB</caption>
+		
 		<thead>
 			<tr>
-				<th>No</th>
-				<th>prescription</th>
-
+			<th>Doctors Prescriptions</th>
+			</tr>
+			<tr>
+				<th>NO</th>
+				<th>Doctor NAME</th>
+				<th>Doctor Field</th>
+				<th>Doctor Prescriptions</th>
 
 			</tr>
+			
+			
 		</thead>
 		<tbody>
-<?php
-		$no 	= 1;
+		
 
-		while ($Lrow = mysqli_fetch_array($presc))///////$query is the retun from ret function 
-		{
+<?php
+		
+
+		while ($Drow = mysqli_fetch_array($doctor))///////$query is the retun from ret function 
+		{ 
+            $no = 1;
 			
 			echo '<tr>
 					<td>'.$no.'</td>
-					<td>'.$Lrow['prescription'].'</td>
+					<td>'.$Drow['name'].'</td>
+					<td>'.$Drow['field'].'</td>
+					<td>'.$Drow['prescription'].'</td>
 					
 
 
@@ -100,10 +125,52 @@
 			
 			$no++;
 		}?>
+		
 		</tbody>
+		</table>
+		<table class="data-table">
+				<thead>
+		
+										<tr>
+				<th>Hospital's Doctors Prescriptions</th>
+				</tr>
+				<tr>
+				<th>NO</th>
+				<th>Doctor NAME</th>
+				<th>Doctor Field</th>
+				<th>Doctor Prescriptions</th>
+				</tr>
+		</thead>
+        <tbody>
+		<?php
+		
 
-	</table>
+		while ($HDrow = mysqli_fetch_array($Hdoctor))///////$query is the retun from ret function 
+		{
+			$no = 1;
+			echo '<tr>
+					<td>'.$no.'</td>
+					<td>'.$HDrow['name'].'</td>
+					<td>'.$HDrow['field'].'</td>
+					<td>'.$HDrow['prescription'].'</td>
+					
+
+
+				</tr>';
+			
+			$no++;
+		}?>
+		
+		</tbody>
+		</table>
+		
 </center>
+		
+		
+		 <!-- the conetent -->
+		
+		
+		
   </div>
     </section>
 	  <!-- Welcome Area End -->
@@ -124,6 +191,22 @@
 </body>
 </html>
 	
+
 	
+<?php
+
+}else{
+	   
+	  echo "You are not Doctor";
+      exit;
+	   
+   }
+
+   }else {
+	echo "You are not Doctor";
+      exit;
+	   
 	
-	
+}
+
+	?>
