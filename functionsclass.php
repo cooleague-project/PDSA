@@ -16,7 +16,7 @@ class functions{
 	}
 		return $conn;
 	}
-    
+
 public function insertAppointment($sql){
 
 	$conn=$this->connect();  /////useing  connect() function
@@ -74,8 +74,12 @@ if (!$query) {
 return 1;
 }else{
  return -1;
-}
+}}
 
+public function concate($day,$month,$year)
+{
+  $appointment=$day.'-'.$month.'-'.$year;
+	return $appointment;
 }
 
 

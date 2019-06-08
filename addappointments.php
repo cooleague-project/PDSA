@@ -3,20 +3,20 @@
 if (isset($_COOKIE['PrivatePageCode'])){
 		include 'functions.php';
 	$conn=connect();
- 
+
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=ret($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['labC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
 		if(isset($_POST['submit'])){
-			
+
 		if($_POST['name']&&$_POST['field']&&$_POST['day']&&$_POST['month']&&$_POST['year']){
-			
-			
+
+
 			 $day=$_POST["day"];
-             $month=$_POST["month"];
-             $year=$_POST["year"];
-             $appointment=$day.'-'.$month.'-'.$year;
+  $month=$_POST["month"];
+  $year=$_POST["year"];
+$appointment=concate($day,$month,$year);
 		if($usrrow['doctorC']==$_COOKIE['PrivatePageCode']){
 			$sql2= "INSERT INTO doctor (name,field,appointment,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_COOKIE['id']."') ";
@@ -33,15 +33,15 @@ if (isset($_COOKIE['PrivatePageCode'])){
 			insertAppointment($sql2);
 
 			}else{
-					
+
 					echo "Bad Cookie.";
 				  exit;
-				}	
-			
+				}
+
 		}
-		
+
 			}
-		
+
 
 
 
@@ -170,7 +170,7 @@ if (isset($_COOKIE['PrivatePageCode'])){
             </div>
           </div>
 
-		  
+
           <div class="form-group row">
             <label for="firstname" class="col-md-2">Doctor Detials<span>:</span> </label>
             <div class="col-md-2">
@@ -181,8 +181,8 @@ if (isset($_COOKIE['PrivatePageCode'])){
               <input type="text" class="form-control" name="field" placeholder="Doctor field " required oninvalid="this.setCustomValidity('please fill this field')">
             </div>
           </div>
-		  
-		  
+
+
            <div class="row">
 
 
@@ -224,24 +224,24 @@ if (isset($_COOKIE['PrivatePageCode'])){
           <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
     </html>
-	
-	
-	
-	
+
+
+
+
 	<?php
 
 }else{
-	   
+
 	  echo "You are not Authrized";
       exit;
-	   
+
    }
 
    }else {
 	echo "You are not Authrized";
       exit;
-	   
-	
+
+
 }
 
 	?>

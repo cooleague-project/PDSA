@@ -38,7 +38,7 @@ function retriveAppointment($sql){
 
 function insert($sql){
 
-	$conn=connect();  /////useing  connect() function 
+	$conn=connect();  /////useing  connect() function
 if ($conn->query($sql) === TRUE) {
     echo "<label id='good'>New record created successfully</label>";
 } else {
@@ -72,7 +72,11 @@ if (!$query) {
 }
 
 }
-
+function concate($day,$month,$year)
+{
+  $appointment=$day.'-'.$month.'-'.$year;
+	return $appointment;
+}
 
 /*
 
