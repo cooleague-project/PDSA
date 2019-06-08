@@ -13,29 +13,6 @@ if (!$conn) {
 	return $conn;
 }
 
-function insertAppointment($sql){
-
-	$conn=connect();  /////useing  connect() function
-if ($conn->query($sql) === TRUE) {
-    echo "<label id='good'>New record created successfully</label>";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-}
-function retriveAppointment($sql){
-
-		$conn=connect();  /////useing  connect() function
-	if ($conn->query($sql) === TRUE) {
-	    echo "<label id='good'>New record created successfully</label>";
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-}
-
-
-
-
 function insertData($sql){
 
 	$conn=connect();  /////useing  connect() function
@@ -48,6 +25,15 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
+function retriveData($sql){
+$conn=connect();  /////useing  connect() function
+$query = mysqli_query($conn, $sql);
+
+if (!$query) {
+	die ('SQL Error: ' . mysqli_error($conn));
+}else{
+ return $query;
+}
 
 function random_code($string,$v) {
 $pattern = " ";
@@ -61,15 +47,6 @@ return $string.$username.$v;
 
 
 
-function retriveData($sql){
-$conn=connect();  /////useing  connect() function
-$query = mysqli_query($conn, $sql);
-
-if (!$query) {
-	die ('SQL Error: ' . mysqli_error($conn));
-}else{
- return $query;
-}
 
 }
 function concate($day,$month,$year)

@@ -17,31 +17,7 @@ class functions{
 		return $conn;
 	}
 
-public function insertAppointment($sql){
-
-	$conn=$this->connect();  /////useing  connect() function
-if ($conn->query($sql) === TRUE) {
-  return 1;
-} else {
-
-return -1;
-}
-
-}
-public function retriveAppointment($sql){
-
-		$conn=$this->connect();  /////useing  connect() function
-	if ($conn->query($sql) === TRUE) {
-	   return 1;
-	} else {
-	   return -1;
-	}
-}
-
-
-
-
-public function insert($sql){
+public function insertData($sql){
 
 	$conn=connect();  /////useing  connect() function
 if ($conn->query($sql) === TRUE) {
@@ -52,21 +28,7 @@ if ($conn->query($sql) === TRUE) {
 
 }
 
-
-
-public function random_code($string,$v) {
-$pattern = " ";
-$firstPart = strstr(strtolower($string), $pattern, true);
-$secondPart = substr(strstr(strtolower($string), $pattern, false), 0,3);
-$nrRand = rand(0, 100);
-
-$username = trim($firstPart).trim($secondPart).trim($nrRand);
-return $string.$username.$v;
-}
-
-
-
-public function ret($sql){
+public function retriveData($sql){
 $conn=connect();  /////useing  connect() function
 $query = mysqli_query($conn, $sql);
 
@@ -82,6 +44,16 @@ public function concate($day,$month,$year)
 	return $appointment;
 }
 
+
+	public function random_code($string,$v) {
+	$pattern = " ";
+	$firstPart = strstr(strtolower($string), $pattern, true);
+	$secondPart = substr(strstr(strtolower($string), $pattern, false), 0,3);
+	$nrRand = rand(0, 100);
+
+	$username = trim($firstPart).trim($secondPart).trim($nrRand);
+	return $string.$username.$v;
+	}
 
 }
 
