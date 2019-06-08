@@ -168,7 +168,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 
 		<?php
 		
-
+			$no 	= 1;
 		while ($HDrow = mysqli_fetch_array($Hdoctor))///////$query is the retun from ret function 
 		{
 			
@@ -206,7 +206,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 		
 				
 		<?php
-		
+		$no 	= 1;
 
 		while ($medicalrow = mysqli_fetch_array($medicalR))///////$query is the retun from ret function 
 		{
