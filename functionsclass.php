@@ -16,6 +16,7 @@ class functions{
 	}
 		return $conn;
 	}
+    
 public function insertAppointment($sql){
 
 	$conn=$this->connect();  /////useing  connect() function
