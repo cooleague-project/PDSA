@@ -29,30 +29,30 @@
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                       <?php 
-					   
-					   
-					   
-					   
+                       <?php
+
+
+
+
 					   if (isset($_COOKIE['PrivatePageLogin'])) {
 include_once 'functions.php';
 
 
 $conn = connect();
-	
-	
-	
-	
-	
+
+
+
+
+
 
 
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=ret($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
-		
+
 								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
-                       
+
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                 <li><a href="my reports.php">My Reports</a></li>
@@ -65,71 +65,71 @@ $conn = connect();
 								<li><a href="xray.php">XRay Scan</a></li>
 								<li><a href="upload my reports.php">Upload My Reports</a></li>
 								<li><a href="pationet codes.php">Pationet Codes</a></li>
-								
+
                             </ul>
                         </li>
-                     
-                        <li><a href="contact.php">Contact</a></li>	
+
+                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
-		
+
 	}
-						   
-						   
+
+
 					   }else if(isset($_COOKIE['PrivatePageCode'])){
-						   
-						   
-						   
+
+
+
 						   include_once 'functions.php';
 
 
 $conn = connect();
-	
-	
-	
-	
-	
+
+
+
+
+
 
 
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if($usrrow['doctorC']==$_COOKIE['PrivatePageCode']){
-		
+
 								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
-                       
+
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                 <li><a href="add report.php">Add Report</a></li>
 								<li><a href="addappointments.php">Add Appointments</a></li>
 								<li><a href="addpresc.php">Add Prescrtiption</a></li>
 								<li><a href="see the pationet history.php">See The Pationet History</a></li>
-								
+
                             </ul>
                         </li>
-                     
-                        <li><a href="contact.php">Contact</a></li>	
+
+                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
 	}else if ($usrrow['labC']==$_COOKIE['PrivatePageCode']){
 								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
-                       
+
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                   <li><a href="add report.php">Add Report</a></li>
 								<li><a href="addappointments.php">Add Appointments</a></li>
 								<li><a href="see the pationet history.php">See The Pationet History</a></li>
-								
+
                             </ul>
                         </li>
-                     
-                        <li><a href="contact.php">Contact</a></li>	
+
+                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
-		
+
 	}else if ($usrrow['hospitalC']==$_COOKIE['PrivatePageCode']){
 								    echo'<li class="menu-active"><a href="index.php">Home</a></li>
-                       
+
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                  <li><a href="add report.php">Add Report</a></li>
@@ -137,60 +137,60 @@ $conn = connect();
 								<li><a href="addpresc.php">Add Prescrtiption</a></li>
 								<li><a href="add surgery detials.php">Add Surgery Detials</a></li>
 								<li><a href="see the pationet history.php">See The Pationet History</a></li>
-								
+
                             </ul>
                         </li>
-                     
-                        <li><a href="contact.php">Contact</a></li>	
+
+                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
-		
+
 	}else{
-		
+
 		echo "Bad Cookie.";
       exit;
 	}
-	
-						   
-						   
-						   
-						   
-						   
-						   
-						   
-						   
-						   
-						   
-						   
-						   
-						   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 					   }else{
-						   
-						   
-						   
-						   
+
+
+
+
 						    echo'<li class="menu-active"><a href="index.php">Home</a></li>
-                       
+
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                 <li><a href="about.php">about us</a></li>
-                                
+
 								<li><a href="xray.php">XRay Scan</a></li>
                             </ul>
                         </li>
-                     
-                        <li><a href="contact.php">Contact</a></li>	
+
+                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="login.php">Login</a></li>
                         <li><a href="reg.php">register</a></li>	';
-						   
-						   
-						   
+
+
+
 					   }
-					   
-					   
-					  	?>				
+
+
+					  	?>
                     </ul>
-                </nav><!-- #nav-menu-container -->		    		
+                </nav><!-- #nav-menu-container -->
                 </div>
             </div>
         </div>
