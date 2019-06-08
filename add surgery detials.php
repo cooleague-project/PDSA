@@ -5,7 +5,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 	$conn=connect();
 
 	$sql = "SELECT hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if($usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
 
@@ -23,7 +23,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 
   $sql2= "INSERT INTO Hdoctor (name,field,surgeryTestTime,surgeryTests,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_POST['tests']."','".$_COOKIE['id']."') ";
-			insert($sql2);
+			insertData($sql2);
 
 
 		}}

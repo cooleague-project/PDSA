@@ -4,8 +4,8 @@
 
 	if (isset($_COOKIE['PrivatePageCode'])){
 		echo "YOU ARE ALREADY LOGGED IN CLEAR YOUR COOKIES BROWSER AND TRY AGIAN";
-		exit; 
-	
+		exit;
+
 }
 
 if(isset($_POST['submit'])){
@@ -13,22 +13,22 @@ if(isset($_POST['submit'])){
 	include 'functions.php';
 	$conn=connect();
 	$sql="SELECT id,doctorC,labC,hospitalC FROM patient WHERE doctorC='".$_POST['Code']."' OR labC='".$_POST['Code']."' OR hospitalC='".$_POST['Code']."'" ;
-$usr=ret($sql);
+$usr=retriveData($sql);
 $row = mysqli_fetch_array($usr);
 if($_POST['Code']==$row['doctorC']||$_POST['Code']==$row['labC']||$_POST['Code']==$row['hospitalC']){
-	
+
 	setcookie('PrivatePageCode', $_POST['Code']);
 		setcookie('id', $row['id']);
-		
+
 
       header('Location: index.php');
-	  exit; 
-		
+	  exit;
+
 	}else{
 			$message = "wrong user or CODE";
 echo "<script type='text/javascript'>alert('$message');</script>";
-	
-		
+
+
 	}
 
 }
@@ -61,10 +61,10 @@ echo "<script type='text/javascript'>alert('$message');</script>";
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
-    <link rel="stylesheet" href="assets/css/style.css">       
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        
-		
+
+
 </head>
 <body>
 
@@ -74,10 +74,10 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 
 	    <!-- Header Area Starts -->
     <?php  include"header.php"?>
-	
+
     <!-- Header Area End -->
-	
-	
+
+
 	<!-- Banner Area Starts -->
     <section class="banner-area other-page">
         <div class="container">
@@ -93,7 +93,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 	<!-- Welcome Area Starts -->
     <section class="welcome-area section-padding">
         <div class="container">
-	
+
 
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
@@ -103,14 +103,14 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                             </div>
                         </div>
                     </div>
-					
+
                     <div class="row">
 					<video style="width:0%; visibility:hidden;" id="preview"></video>
 					<br><center><button style="width:0%; visibility:hidden;" id="backk" onclick="back()" class="btn">Back</button></center>
                         <div id="loginform" class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
-								
+
                         			<h3>Login to our site</h3>
                             		<p>Enter your username and password to log on:</p>
                         		</div>
@@ -118,23 +118,23 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                         			<i class="fa fa-key"></i>
                         		</div>
                             </div>
-							
+
                             <form id="myForm" role="form" action="" method="post" class="login-form">
-			                    
+
 									<div   class="form-group">
 			                        	<label class="sr-only" for="form-username">Code</label>
 			                        	<input id="user" type="text" name="Code" placeholder="Code..." class="form-username form-control">
 			                        </div>
-								
+
 									<button name="submit" id="submit" type="submit" class="btn">Sign in!</button>
-									
-			                        
+
+
 			                    </form>
-								
+
 		                    </div>
                         </div>
                     </div>
-                   
+
                 </div>
 
     </section>
@@ -143,7 +143,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
      <?php  include"footer.php"?>
     <!-- Footer Area End -->
 
-	
+
 	<!-- Javascript -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>

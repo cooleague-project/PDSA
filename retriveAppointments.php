@@ -5,7 +5,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	$conn=connect();
 
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
@@ -13,11 +13,11 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		FROM doctor
 		WHERE patientid="'.$_COOKIE['id'].'"';
 
-	$appoitment=retriveAppointment($sql);
+	$appoitment=retriveData($sql);
 	$sql = 'SELECT *
 		FROM hdoctor
 		WHERE patientid="'.$_COOKIE['id'].'"';
-		$hospitalAppoitment=retriveAppointment($sql2);
+		$hospitalAppoitment=retriveData($sql2);
 
 	?>
 

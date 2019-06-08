@@ -36,7 +36,7 @@ function retriveAppointment($sql){
 
 
 
-function insert($sql){
+function insertData($sql){
 
 	$conn=connect();  /////useing  connect() function
 if ($conn->query($sql) === TRUE) {
@@ -61,7 +61,7 @@ return $string.$username.$v;
 
 
 
-function ret($sql){
+function retriveData($sql){
 $conn=connect();  /////useing  connect() function
 $query = mysqli_query($conn, $sql);
 

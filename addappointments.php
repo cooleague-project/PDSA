@@ -5,7 +5,7 @@ if (isset($_COOKIE['PrivatePageCode'])){
 	$conn=connect();
 
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['labC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
 		if(isset($_POST['submit'])){
@@ -20,17 +20,17 @@ $appointment=concate($day,$month,$year);
 		if($usrrow['doctorC']==$_COOKIE['PrivatePageCode']){
 			$sql2= "INSERT INTO doctor (name,field,appointment,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_COOKIE['id']."') ";
-			insertAppointment($sql2);
+			insertData($sql2);
 
 			}else if ($usrrow['hospitalC']==$_COOKIE['PrivatePageCode']){
 			$sql2= "INSERT INTO Hdoctor (name,field,appointment,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_COOKIE['id']."') ";
-			insertAppointment($sql2);
+			insertData($sql2);
 
 			}else if ($usrrow['labC']==$_COOKIE['PrivatePageCode']){
 				$sql2= "INSERT INTO lab (name,appointment,patientid)
 			VALUES ('".$_POST['name']."','".$appointment."','".$_COOKIE['id']."') ";
-			insertAppointment($sql2);
+			insertData($sql2);
 
 			}else{
 

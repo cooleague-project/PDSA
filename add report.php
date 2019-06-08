@@ -4,27 +4,27 @@
 if (isset($_COOKIE['PrivatePageCode'])) {
 		include 'functions.php';
 	$conn=connect();
-	
+
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['labC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
-		
-	
+
+
 
 $statusMsg = '';
 
 // File upload path
 
 if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
-	
+
 	$targetDir = "reports/";
 $fileName = basename($_FILES["file"]["name"]);
 $targetFilePath = $targetDir . $fileName;
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
-	
-	
+
+
     // Allow certain file formats
     $allowTypes = array('jpg','png','jpeg','gif','pdf');
     if(in_array($fileType, $allowTypes)){
@@ -32,13 +32,13 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
 			$sql="INSERT into medicalR (name,byWho,reportLink,patientid) VALUES ('".$_POST['name']."','".$_POST['byWho']."','".$fileName."','".$_COOKIE['id']."')";
-			
+
             $insert = $conn->query($sql);
             if($insert){
                 $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
                 $statusMsg = "File upload failed, please try again.";
-            } 
+            }
         }else{
             $statusMsg = "Sorry, there was an error uploading your file.";
         }
@@ -97,9 +97,9 @@ echo $statusMsg;
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
-    <link rel="stylesheet" href="assets/css/style.css">       
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        
+
 <link rel="stylesheet" href="ret.css" />
 </head>
 <body>
@@ -111,9 +111,9 @@ echo $statusMsg;
 
 	    <!-- Header Area Starts -->
     <?php  include"header.php"?>
-	
+
     <!-- Header Area End -->
-	
+
 		<!-- Banner Area Starts -->
     <section class="banner-area other-page">
         <div class="container">
@@ -130,9 +130,9 @@ echo $statusMsg;
     <section class="welcome-area section-padding">
         <div class="container">
 
-		
+
 		 <!-- the conetent -->
-		
+
 		<form action="" method="post" enctype="multipart/form-data">
     Select  File to Upload:
 	<div>
@@ -146,13 +146,13 @@ echo $statusMsg;
     <input type="file" name="file">
     <input type="submit" name="submit" value="Upload">
 </form>
-		
-		
-		
+
+
+
 		 <!-- the conetent -->
-		
-		
-		
+
+
+
   </div>
     </section>
 	  <!-- Welcome Area End -->
@@ -172,23 +172,23 @@ echo $statusMsg;
 
 </body>
 </html>
-	
-	
-	
+
+
+
 <?php
 
 }else{
-	   
+
 	  echo "You are not Authrized";
       exit;
-	   
+
    }
 
    }else {
 	echo "You are not Authrized";
       exit;
-	   
-	
+
+
 }
 
 	?>

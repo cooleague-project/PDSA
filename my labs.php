@@ -3,20 +3,20 @@
 if (isset($_COOKIE['PrivatePageLogin'])) {
 		include 'functions.php';
 	$conn=connect();
-	
+
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
-	
+
 	$sql = 'SELECT name
 		FROM lab WHERE patientid="'.$_COOKIE['id'].'"';
-		
-	$labs=ret($sql);
+
+	$labs=retriveData($sql);
 	?>
-	
-	
-	
+
+
+
 <!DOCTYPE html>
 
 <head>
@@ -41,9 +41,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
-    <link rel="stylesheet" href="assets/css/style.css">       
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        
+
 <link rel="stylesheet" href="ret.css" />
 </head>
 <body>
@@ -55,9 +55,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 	    <!-- Header Area Starts -->
     <?php  include"header.php"?>
-	
+
     <!-- Header Area End -->
-	
+
 		<!-- Banner Area Starts -->
     <section class="banner-area other-page">
         <div class="container">
@@ -73,7 +73,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		<!-- Welcome Area Starts -->
     <section class="welcome-area section-padding">
         <div class="container">
-	
+
 <center>
 
 	<h1>Labs</h1>
@@ -91,17 +91,17 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 <?php
 		$no 	= 1;
 
-		while ($Lrow = mysqli_fetch_array($labs))///////$query is the retun from ret function 
+		while ($Lrow = mysqli_fetch_array($labs))///////$query is the retun from ret function
 		{
-			
+
 			echo '<tr>
 					<td>'.$no.'</td>
 					<td>'.$Lrow['name'].'</td>
-					
+
 
 
 				</tr>';
-			
+
 			$no++;
 		}?>
 		</tbody>
@@ -127,24 +127,24 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 </body>
 </html>
-	
-	
-	
-	
+
+
+
+
 <?php
 
 }else{
-	   
+
 	  echo "You are not patient";
       exit;
-	   
+
    }
 
    }else {
 	echo "You are not patient";
       exit;
-	   
-	
+
+
 }
 
 	?>

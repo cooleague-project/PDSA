@@ -4,8 +4,8 @@
 
 	if (isset($_COOKIE['PrivatePageLogin'])){
 		echo "YOU ARE ALREADY LOGGED IN CLEAR YOUR COOKIES BROWSER AND TRY AGIAN";
-		exit; 
-	
+		exit;
+
 }
 
 if(isset($_POST['submit'])){
@@ -13,22 +13,22 @@ if(isset($_POST['submit'])){
 	include 'functions.php';
 	$conn=connect();
 	$sql="SELECT id,password FROM patient WHERE username='".$_POST['user']."'";
-$usr=ret($sql);
+$usr=retriveData($sql);
 $row = mysqli_fetch_array($usr);
 if(password_verify($_POST['keypass']  , $row['password'])){
-	
+
 	setcookie('PrivatePageLogin', password_hash($row['password'], PASSWORD_DEFAULT));
 		setcookie('id', $row['id']);
-		
+
 
       header('Location: index.php');
-	  exit; 
-		
+	  exit;
+
 	}else{
 			$message = "wrong user or password";
 echo "<script type='text/javascript'>alert('$message');</script>";
-	
-		
+
+
 	}
 
 }
@@ -59,10 +59,10 @@ echo "<script type='text/javascript'>alert('$message');</script>";
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
-    <link rel="stylesheet" href="assets/css/style.css">       
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        
-		
+
+
 </head>
 <body>
 
@@ -72,10 +72,10 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 
 	    <!-- Header Area Starts -->
     <?php  include"header.php"?>
-	
+
     <!-- Header Area End -->
-	
-	
+
+
 	<!-- Banner Area Starts -->
     <section class="banner-area other-page">
         <div class="container">
@@ -91,7 +91,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 	<!-- Welcome Area Starts -->
     <section class="welcome-area section-padding">
         <div class="container">
-	
+
 
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
@@ -101,14 +101,14 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                             </div>
                         </div>
                     </div>
-					
+
                     <div class="row">
 					<video style="width:0%; visibility:hidden;" id="preview"></video>
 					<br><center><button style="width:0%; visibility:hidden;" id="backk" onclick="back()" class="btn">Back</button></center>
                         <div id="loginform" class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
-								
+
                         			<h3>Login to our site</h3>
                             		<p>Enter your username and password to log on:</p>
                         		</div>
@@ -116,7 +116,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                         			<i class="fa fa-key"></i>
                         		</div>
                             </div>
-							
+
                             <form id="myForm" role="form" action="" method="post" class="login-form">
 			                    	<div id="usern" class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
@@ -126,12 +126,12 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 			                        	<label class="sr-only" for="form-password">Password</label>
 			                        	<input id="keypass" type="password" name="keypass" placeholder="Password..." class="form-password form-control">
 			                        </div>
-								
+
 									<button name="submit" id="submit" type="submit" class="btn">Sign in!</button>
-									
-			                        
+
+
 			                    </form>
-								
+
 		                    </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
      <?php  include"footer.php"?>
     <!-- Footer Area End -->
 
-	
+
 	<!-- Javascript -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>

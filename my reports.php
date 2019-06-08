@@ -3,20 +3,20 @@
 if (isset($_COOKIE['PrivatePageLogin'])) {
 		include 'functions.php';
 	$conn=connect();
-	
+
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
-	
+
 	$sql = 'SELECT name,byWho,reportLink
 		FROM medicalR WHERE patientid="'.$_COOKIE['id'].'"';
-		
-	$medicalR=ret($sql);
+
+	$medicalR=retriveData($sql);
 	?>
-	
-	
-	
+
+
+
 <!DOCTYPE html>
 
 <head>
@@ -41,9 +41,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
-    <link rel="stylesheet" href="assets/css/style.css">       
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        
+
 <link rel="stylesheet" href="ret.css" />
 </head>
 <body>
@@ -55,9 +55,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 	    <!-- Header Area Starts -->
     <?php  include"header.php"?>
-	
+
     <!-- Header Area End -->
-	
+
 		<!-- Banner Area Starts -->
     <section class="banner-area other-page">
         <div class="container">
@@ -73,7 +73,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		<!-- Welcome Area Starts -->
     <section class="welcome-area section-padding">
         <div class="container">
-	
+
 <center>
 
 	<h1>My Reports</h1>
@@ -81,7 +81,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		<caption class="title">My Reports</caption>
 		<thead>
 							<tr>
-	
+
 				<th>Reports</th>
 				</tr>
 								<tr>
@@ -89,19 +89,19 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 				<th>Report NAME</th>
 				<th>By Who </th>
 				<th>Report Link</th>
-			
+
 				</tr>
-				
+
 		</thead>
-		
+
 		<tbody>
-				
+
 		<?php
 		$no 	= 1;
 
-		while ($medicalrow = mysqli_fetch_array($medicalR))///////$query is the retun from ret function 
+		while ($medicalrow = mysqli_fetch_array($medicalR))///////$query is the retun from ret function
 		{
-			
+
 			echo '<tr>
 					<td>'.$no.'</td>
 					<td>'.$medicalrow['name'].'</td>
@@ -110,10 +110,10 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 
 				</tr>';
-			
+
 			$no++;
 		}?>
-		
+
 
 		</tbody>
 
@@ -138,24 +138,24 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 </body>
 </html>
-	
-	
-	
-	
+
+
+
+
 <?php
 
 }else{
-	   
+
 	  echo "You are not patient";
       exit;
-	   
+
    }
 
    }else {
 	echo "You are not patient";
       exit;
-	   
-	
+
+
 }
 
 	?>

@@ -4,7 +4,7 @@
         include 'functions.php';
         $conn=connect();
         $sql = "SELECT doctorC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
-        $usr=ret($sql);
+        $usr=retriveData($sql);
         $usrrow = mysqli_fetch_array($usr);
         if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode'])
         {
@@ -15,22 +15,22 @@
                 {
                     $sql= "INSERT INTO doctor (name,field,prescription,patientid)
                      VALUES ('".$_POST['name']."','".$_POST['field']."','".$prescription."','".$_COOKIE['id']."') ";
-                    insert($sql);
+                    insertData($sql);
                 }
                 else if ($usrrow['hospitalC']==$_COOKIE['PrivatePageCode'])
                 {
                     $sql= "INSERT INTO hdoctor (name,field,prescription,patientid)
                      VALUES ('".$_POST['name']."','".$_POST['field']."','".$prescription."','".$_COOKIE['id']."') ";
-                    insert($sql);
+                    insertData($sql);
                 }
                 else{
-					
+
 					echo "Bad Cookie.";
 				  exit;
-				}	
-			
+				}
+
             }
-    
+
     ?>
 
 
@@ -59,9 +59,9 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
-    <link rel="stylesheet" href="assets/css/style.css">       
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        
+
 <link rel="stylesheet" href="ret.css" />
 </head>
 <body>
@@ -73,9 +73,9 @@
 
 	    <!-- Header Area Starts -->
     <?php  include"header.php"?>
-	
+
     <!-- Header Area End -->
-	
+
 		<!-- Banner Area Starts -->
     <section class="banner-area other-page">
         <div class="container">
@@ -92,9 +92,9 @@
     <section class="welcome-area section-padding">
         <div class="container">
 
-		
+
 		 <!-- the conetent -->
-		
+
 <!-- Specialist Area Starts -->
         <section class="specialist-area section-padding">
             <div class="container">
@@ -102,7 +102,7 @@
                     <div class="col-lg-6 offset-lg-3">
                         <div class="section-top text-center">
                             <h2>Add prescription</h2>
-                          
+
                         </div>
                     </div>
 
@@ -116,10 +116,10 @@
             <div class="col-md-2">
                <textarea rows="4" cols="50" name="prescription" placeholder="prescription" required oninvalid="this.setCustomValidity('please fill this field')"></textarea>
             </div>
-            
+
           </div>
 
-		  
+
           <div class="form-group row">
             <label for="firstname" class="col-md-2">Doctor Detials<span>:</span> </label>
             <div class="col-md-2">
@@ -130,8 +130,8 @@
               <input type="text" class="form-control" name="field" placeholder="Doctor field " required oninvalid="this.setCustomValidity('please fill this field')">
             </div>
           </div>
-		  
-		  
+
+
            <div class="row">
             <div class="offset-md-6">
               <button type="submit" class="btn btn-primary" name="submit">Add </button>
@@ -155,25 +155,25 @@
     <script src="assets/js/vendor/jquery.nice-select.min.js"></script>
     <script src="assets/js/vendor/superfish.min.js"></script>
     <script src="assets/js/main.js"></script>
- 
+
 </body>
 </html>
-	
+
 
 <?php
 
 }else{
-	   
+
 	  echo "You are not Authrized";
       exit;
-	   
+
    }
 
    }else {
 	echo "You are not Authrized";
       exit;
-	   
-	
+
+
 }
 
 	?>
