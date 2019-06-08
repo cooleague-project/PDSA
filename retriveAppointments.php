@@ -12,13 +12,17 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	$sql = 'SELECT *
 		FROM doctor
 		WHERE patientid="'.$_COOKIE['id'].'"';
-
 	$appoitment=retriveData($sql);
-	$sql = 'SELECT *
+
+	$sql2 = 'SELECT *
 		FROM hdoctor
 		WHERE patientid="'.$_COOKIE['id'].'"';
 		$hospitalAppoitment=retriveData($sql2);
 
+		$sq3 = 'SELECT *
+			FROM lab
+			WHERE patientid="'.$_COOKIE['id'].'"';
+			$lapAppoitment=retriveData($sql3);
 	?>
 
 
@@ -143,6 +147,41 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 					<td>'.$no.'</td>
 					      <td>'.$Lrow['name'].'</td>
 								<td>'.$Lrow['field'].'</td>
+					<td>'.$Lrow['appointment'].'</td>
+
+
+				</tr>';
+
+			$no++;
+		}?>
+
+
+		</
+		</tbody>
+
+	</table>
+	<h1>Appointments</h1>
+	<table class="data-table">
+		<caption class="title">Laps Appointments </caption>
+		<thead>
+			<tr>
+				<th>NO</th>
+				<th>lap Name</th>
+				<th>Appointment Date</th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+<?php
+		$no 	= 1;
+
+		while ($Lrow = mysqli_fetch_array($lapAppoitment))///////$query is the retun from ret function
+		{
+
+			echo '<tr>
+					<td>'.$no.'</td>
+								<td>'.$Lrow['name'].'</td>
 					<td>'.$Lrow['appointment'].'</td>
 
 
