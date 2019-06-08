@@ -108,10 +108,10 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 <?php
 		
-
+        $no = 1;
 		while ($Drow = mysqli_fetch_array($doctor))///////$query is the retun from ret function 
 		{ 
-            $no = 1;
+            
 			
 			echo '<tr>
 					<td>'.$no.'</td>
@@ -144,10 +144,10 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
         <tbody>
 		<?php
 		
-
+        $no = 1;
 		while ($HDrow = mysqli_fetch_array($Hdoctor))///////$query is the retun from ret function 
 		{
-			$no = 1;
+			
 			echo '<tr>
 					<td>'.$no.'</td>
 					<td>'.$HDrow['name'].'</td>
