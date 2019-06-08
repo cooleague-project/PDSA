@@ -19,7 +19,7 @@ class functions{
 
 public function insertData($sql){
 
-	$conn=connect();  /////useing  connect() function
+	$conn=$this->connect();  /////useing  connect() function
 if ($conn->query($sql) === TRUE) {
   return 1;
 } else {

@@ -5,27 +5,28 @@ use PHPUnit\Framework\TestCase;
 
 class functionsTest extends PHPUnit_Framework_TestCase
 {
-    
+
     public $obj;
 
     public function setUp()
     {
         $this->obj = new functions();
     }
-    
+
    /**
  * @testdox
  */
-    
-    public function TestinsertAppointment(){
-       // $obj2=new functions();
-        
-                $this->assertEquals(1 , $this->obj->insertAppointment(1));
+
+    public function TestinsertData(){
+
+    //1-testing by send empty field to it
+    $empty='';
+                $this->assertEquals(1 , $this->obj->insertData(1));
 
     }
-    
-    
-    
+
+
+
 }
 
 ?>
