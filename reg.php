@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
 			$DHcode=random_code($_POST['username'],"DH");
 			$sql=	"INSERT INTO patient (username, password, name,email,doctorC,labC,hospitalC,age,birthdate) VALUES ('".$_POST['username']."','".password_hash($_POST['password'], PASSWORD_DEFAULT)."','".$_POST['name']."','".$_POST['email']."','".$Dcode."','".$Lcode."','".$DHcode."','".$_POST['age']."','".$_POST['birthdate']."')";
 
-insert($sql);
+insertData($sql);
 	}else{
 			echo 'enter the needed data';
 		}

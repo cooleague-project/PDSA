@@ -35,6 +35,15 @@ if (!$query) {
  return $query;
 }
 
+
+
+
+
+
+}
+
+
+
 function random_code($string,$v) {
 $pattern = " ";
 $firstPart = strstr(strtolower($string), $pattern, true);
@@ -43,11 +52,6 @@ $nrRand = rand(0, 100);
 
 $username = trim($firstPart).trim($secondPart).trim($nrRand);
 return $string.$username.$v;
-}
-
-
-
-
 }
 function concate($day,$month,$year)
 {

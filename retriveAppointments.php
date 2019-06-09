@@ -11,17 +11,17 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 	$sql = 'SELECT *
 		FROM doctor
-		WHERE patientid="'.$_COOKIE['id'].'"';
+		WHERE patientid="'.$_COOKIE['id'].'" AND appointment IS NOT NULL';
 	$appoitment=retriveData($sql);
 
 	$sql2 = 'SELECT *
 		FROM hdoctor
-		WHERE patientid="'.$_COOKIE['id'].'"';
+		WHERE patientid="'.$_COOKIE['id'].'" AND appointment IS NOT NULL';
 		$hospitalAppoitment=retriveData($sql2);
 
-		$sq3 = 'SELECT *
+		$sql3 = 'SELECT *
 			FROM lab
-			WHERE patientid="'.$_COOKIE['id'].'"';
+			WHERE patientid="'.$_COOKIE['id'].'" AND appointment IS NOT NULL';
 			$lapAppoitment=retriveData($sql3);
 	?>
 
@@ -86,7 +86,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 <center>
 
-	<h1>Appointments</h1>
+	<h1>Doctors Appointments </h1>
 	<table class="data-table">
 		<caption class="title">Doctors Appointments </caption>
 		<thead>
@@ -123,7 +123,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		</tbody>
 
 	</table>
-	<h1>Appointments</h1>
+	<h1>Hospital Doctors Appointments </h1>
 	<table class="data-table">
 		<caption class="title">Hospital Doctors Appointments </caption>
 		<thead>
@@ -160,7 +160,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		</tbody>
 
 	</table>
-	<h1>Appointments</h1>
+	<h1>Laps Appointments</h1>
 	<table class="data-table">
 		<caption class="title">Laps Appointments </caption>
 		<thead>

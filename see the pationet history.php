@@ -10,12 +10,12 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
 
 		$sql = 'SELECT name,field,prescription
-		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'"';
+		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
 	$doctor=retriveData($sql);
 
 		$sql = 'SELECT name,field,prescription
-		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'"';
+		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
 	$Hdoctor=retriveData($sql);
 		$sql = 'SELECT name,byWho,reportLink

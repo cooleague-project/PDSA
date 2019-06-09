@@ -9,12 +9,12 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
    $sql = 'SELECT name,field,prescription
-		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'"';
+		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
 	$doctor=retriveData($sql);
 
 		$sql = 'SELECT name,field,prescription
-		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'"';
+		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
 	$Hdoctor=retriveData($sql);
 	?>
@@ -35,7 +35,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>Registration</title>
+    <title>My Prescriptions</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -69,8 +69,8 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Registration</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="reg.php">Registration</a>
+                    <h1>My Prescriptions</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="reg.php">My Prescriptions</a>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 		<center>
 
-	<h1>Doctors</h1>
+	<h1>My Prescriptions</h1>
 	<table class="data-table">
 
 		<thead>

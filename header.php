@@ -47,7 +47,7 @@ $conn = connect();
 
 
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
-	$usr=ret($sql);
+	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
