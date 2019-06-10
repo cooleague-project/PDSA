@@ -20,22 +20,22 @@ class functions{
 public function insertData($sql){
 
 	$conn=$this->connect();  /////useing  connect() function
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) == TRUE) {
   return 1;
 } else {
-    return-1;
+    return -1;
 }
 
 }
 
 public function retriveData($sql){
-$conn=connect();  /////useing  connect() function
+$conn=$this->connect();  /////useing  connect() function
 $query = mysqli_query($conn, $sql);
 
 if (!$query) {
-return 1;
+return -1;
 }else{
- return -1;
+ return 1;
 }}
 
 public function concate($day,$month,$year)
