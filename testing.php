@@ -44,10 +44,14 @@ class functionsTest extends PHPUnit_Framework_TestCase
         // Calling $stub
         $res=$stub->random();
         //$this->assertEquals('2', $res);
-    //   $this->obj->attach($stub);
+    
+        //test case 1 one word
+        $this->assertEquals('john2D',$this->obj->random_code('john','D',$res));
+        //test case 2 empty 
+        $this->assertEquals(' 2 ',$this->obj->random_code(' ',' ',$res));
+        //test case 3 2 words
+        $this->assertEquals('john davidjohnda2L',$this->obj->random_code('john david','L',$res));
 
-        //test case 1
-        $this->assertEquals('b2D',$this->obj->random_code('b h','D',$res));
     }
 
 
