@@ -3,23 +3,25 @@
 
 class functions{
 
-	public function connect(){
-		$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "pdsa";
+	public function connect($servername, $username, $password, $dbname){
+
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	if (!$conn) {
-		die ('Failed to connect to MySQL: ' . mysqli_connect_error());
+		return -1;
 	}
-		return $conn;
+
+	$out = new MyXYZ();
+	$out->x = $conn;
+	   $out->y = 1;
+	 return 1;
 	}
 
 public function insertData($sql){
 
-	$conn=$this->connect();  /////useing  connect() function
+	$x=$this->connect("localhost","root","","pdsa");
+	 $conn=$x->x;
 if ($conn->query($sql) == TRUE) {
   return 1;
 } else {
@@ -29,14 +31,16 @@ if ($conn->query($sql) == TRUE) {
 }
 
 public function retriveData($sql){
-$conn=$this->connect();  /////useing  connect() function
+	$x=$this->connect("localhost","root","","pdsa");
+	 $conn=$x->x;  /////useing  connect() function
 $query = mysqli_query($conn, $sql);
 
 if (!$query) {
 return -1;
 }else{
  return 1;
-}}
+}
+}
 
 public function concate($day,$month,$year)
 {
@@ -57,6 +61,16 @@ public function concate($day,$month,$year)
 	$username = trim($firstPart).trim($secondPart).trim($nrRand);
 	return $string.$username.$v;
 	}
+
+}
+
+
+
+
+class MyXYZ
+{
+    public $x;
+    public $y;
 
 }
 

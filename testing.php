@@ -15,22 +15,31 @@ class functionsTest extends PHPUnit_Framework_TestCase
 
    /**
  * @test
+ *@expectedException InvalidArgumentException
  */
 
 
 
-  /*   public function TestConnect(){
-        //test with empty inputs (invalid)
-       // $this->assertEquals(-1,$this->obj->connect("","","",""));
-         //test with valid inputs
-         $res=$this->obj->connect("localhost","root","","pdsa");
-          $this->assertNull($res[0]);
+   public function TestConnect(){
 
-     }*/
+
+
+      // test 2 input
+      $this->assertEquals(1,$this->obj->connect("localhost","root","","") );
+      // test all input
+    $this->assertEquals(1,$this->obj->connect("localhost","root","","pdsa") );
+      // 1- testcase1 test all inouts is empty
+    $this->assertEquals(-1,$this->obj->connect("","","","") );
+    // test 1 input
+$this->assertEquals(-1,$this->obj->connect("localhost","","","") );
+
+
+     }
 
      /**
      * @test
      */
+
     public function testRandomcode()
     {
         // Create a stub for the SomeClass class.
@@ -44,10 +53,10 @@ class functionsTest extends PHPUnit_Framework_TestCase
         // Calling $stub
         $res=$stub->random();
         //$this->assertEquals('2', $res);
-    
+
         //test case 1 one word
         $this->assertEquals('john2D',$this->obj->random_code('john','D',$res));
-        //test case 2 empty 
+        //test case 2 empty
         $this->assertEquals(' 2 ',$this->obj->random_code(' ',' ',$res));
         //test case 3 2 words
         $this->assertEquals('john davidjohnda2L',$this->obj->random_code('john david','L',$res));
@@ -60,7 +69,7 @@ class functionsTest extends PHPUnit_Framework_TestCase
   * @test
   *@expectedException InvalidArgumentException
   */
-/*
+
    public function TestinsertData(){
 
 
@@ -81,12 +90,12 @@ class functionsTest extends PHPUnit_Framework_TestCase
    $this->assertEquals( 'empty',$this->obj->insertData($empty));
     }
 
-*/
+
        /**
       * @test
       *@expectedException InvalidArgumentException
       */
-/*
+
        public function TestretriveData(){
 
 
@@ -103,12 +112,12 @@ class functionsTest extends PHPUnit_Framework_TestCase
                $empty='';
                    $this->assertEquals( 'empty',$this->obj->insertData($empty));
        }
-*/
+
        /**
        * @test
        *
        */
-       /*
+
        public function Testconcate(){
          //1- test empty prramters
          $this->assertEquals(''.'-'.''.'-'.'' , $this->obj->concate('','',''));
@@ -125,7 +134,7 @@ class functionsTest extends PHPUnit_Framework_TestCase
 
 
        }
-*/
+
 }
 
 ?>
