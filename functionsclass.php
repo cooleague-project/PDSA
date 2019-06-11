@@ -20,7 +20,7 @@ class functions{
 public function insertData($sql){
 
 	$conn=$this->connect();  /////useing  connect() function
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) == TRUE) {
   return 1;
 } else {
     return-1;
@@ -29,13 +29,13 @@ if ($conn->query($sql) === TRUE) {
 }
 
 public function retriveData($sql){
-$conn=connect();  /////useing  connect() function
+$conn=$this->connect();  /////useing  connect() function
 $query = mysqli_query($conn, $sql);
 
 if (!$query) {
-return 1;
+return -1;
 }else{
- return -1;
+ return 1;
 }}
 
 public function concate($day,$month,$year)
@@ -48,11 +48,11 @@ public function concate($day,$month,$year)
         return rand(0,100);
     }
 
-	public function random_code($string,$v) {
+	public function random_code($string,$v,$nrRand) {
 	$pattern = " ";
 	$firstPart = strstr(strtolower($string), $pattern, true);
 	$secondPart = substr(strstr(strtolower($string), $pattern, false), 0,3);
-	$nrRand = random();
+	//$nrRand = $this-> random();
 
 	$username = trim($firstPart).trim($secondPart).trim($nrRand);
 	return $string.$username.$v;
