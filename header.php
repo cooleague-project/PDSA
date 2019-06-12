@@ -60,7 +60,6 @@ $conn = connect();
 								<li><a href="retpresc.php">My Prescrtiption</a></li>
 								<li><a href="my doctors.php">My Doctors</a></li>
 								<li><a href="my labs.php">My Labs</a></li>
-								<li><a href="my reports.php">my reports</a></li>
                                 <li><a href="my surgery detials.php">My Surgery Detials</a></li>
 								<li><a href="xray.php">XRay Scan</a></li>
 								<li><a href="upload my reports.php">Upload My Reports</a></li>
@@ -69,7 +68,6 @@ $conn = connect();
                             </ul>
                         </li>
 
-                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
 
@@ -108,7 +106,6 @@ $conn = connect();
                             </ul>
                         </li>
 
-                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
 	}else if ($usrrow['labC']==$_COOKIE['PrivatePageCode']){
@@ -123,7 +120,6 @@ $conn = connect();
                             </ul>
                         </li>
 
-                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
 
@@ -141,7 +137,6 @@ $conn = connect();
                             </ul>
                         </li>
 
-                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="logout.php">Logout</a></li>
                        ';
 
@@ -173,13 +168,11 @@ $conn = connect();
 
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
-                                <li><a href="about.php">about us</a></li>
 
 								<li><a href="xray.php">XRay Scan</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="contact.php">Contact</a></li>
 						<li><a href="login.php">Login</a></li>
                         <li><a href="reg.php">register</a></li>	';
 
