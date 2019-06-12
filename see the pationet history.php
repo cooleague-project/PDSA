@@ -7,7 +7,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
-	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']){
+	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']||$usrrow['labC']== $_COOKIE['PrivatePageCode']){
 
 		$sql = 'SELECT name,field,prescription
 		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
