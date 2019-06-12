@@ -22,11 +22,11 @@
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
     <link rel="stylesheet" href="assets/css/style.css">
-	    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
-    <script src="bootstrap/popper.min.js"></script>
-    <script src="bootstrap/jquery.min.js"></script>
-    <script src="bootstrap/bootstrap.min.js"></script>
-	
+	    <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/popper.min.js"></script>
+    <script src="/bootstrap/jquery.min.js"></script>
+    <script src="/bootstrap/bootstrap.min.js"></script>
+ 
 
  <link rel="stylesheet" href="static/css/main.css">
  <script src="static/js/main.js"></script>
