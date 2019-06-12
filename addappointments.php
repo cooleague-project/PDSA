@@ -47,13 +47,13 @@ $appointment=concate($day,$month,$year);
 
  ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required Meta Tags -->
-    <meta charset="UTF-8">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+ <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <!-- Page Title -->
     <title>Doctors</title>
 
@@ -72,6 +72,20 @@ $appointment=concate($day,$month,$year);
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="styles.css">
+	    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+
+  
+    <link rel="stylesheet" href="assets/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="assets/css/linearicons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+<link rel="stylesheet" href="ret.css" />
 </head>
 <body>
     <!-- Preloader Starts -->
@@ -85,21 +99,24 @@ $appointment=concate($day,$month,$year);
     <!-- Header Area End -->
 
     <!-- Banner Area Starts -->
-    <section class="banner-area other-page">
+
+	
+	    <section class="banner-area other-page">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Our doctors</h1>
-                    <a href="doctors.php">Home</a> <span>|</span> <a href="addappointments.php">add appointments</a>
+                    <h1>Add Appointments</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="addappointments.php">Add Appointments</a>
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner Area End -->
 
-        <!-- Specialist Area Starts -->
-        <section class="specialist-area section-padding">
-            <div class="container">
+	
+		<!-- Welcome Area Starts -->
+    <section class="welcome-area section-padding">
+        <div class="container">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3">
                         <div class="section-top text-center">
@@ -148,7 +165,9 @@ $appointment=concate($day,$month,$year);
           </div>
         </form>
 
-
+</div>
+    </section>
+	  <!-- Welcome Area End -->
        
 
         <!-- Footer Area Starts -->

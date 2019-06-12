@@ -54,10 +54,10 @@ if (isset($_COOKIE['PrivatePageCode'])) {
  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <!-- Page Title -->
     <title>Add Surgery Details</title>
 
+   
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
 
@@ -69,10 +69,6 @@ if (isset($_COOKIE['PrivatePageCode'])) {
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/linearicons.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-    <link rel="stylesheet" href="styles.css">
 
 
 <link rel="stylesheet" href="ret.css" />
