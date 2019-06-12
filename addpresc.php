@@ -121,7 +121,7 @@
 
 
           <div class="form-group row">
-            <label for="firstname" class="col-md-2">Doctor Detials<span>:</span> </label>
+            <label for="firstname" class="col-md-2">Doctor Details<span>:</span> </label>
             <div class="col-md-2">
               <input type="text" class="form-control" name="name" placeholder="Doctor Name " required oninvalid="this.setCustomValidity('please fill this field')">
             </div>

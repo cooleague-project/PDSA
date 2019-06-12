@@ -60,7 +60,7 @@ $conn = connect();
 								<li><a href="retpresc.php">My Prescrtiption</a></li>
 								<li><a href="my doctors.php">My Doctors</a></li>
 								<li><a href="my labs.php">My Labs</a></li>
-                                <li><a href="my surgery detials.php">My Surgery Detials</a></li>
+                                <li><a href="my surgery Details.php">My Surgery Details</a></li>
 								<li><a href="xray.php">XRay Scan</a></li>
 								<li><a href="upload my reports.php">Upload My Reports</a></li>
 								<li><a href="Patient codes.php">Patient Codes</a></li>
@@ -131,7 +131,7 @@ $conn = connect();
                                  <li><a href="add report.php">Add Report</a></li>
 								<li><a href="addappointments.php">Add Appointments</a></li>
 								<li><a href="addpresc.php">Add Prescrtiption</a></li>
-								<li><a href="add surgery detials.php">Add Surgery Detials</a></li>
+								<li><a href="add surgery Details.php">Add Surgery Details</a></li>
 								<li><a href="see the patient profile.php">See The Patient Profile</a></li>
 
                             </ul>

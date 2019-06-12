@@ -29,7 +29,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>My Surgery Detials</title>
+    <title>My Surgery Details</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -63,8 +63,8 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>My Surgery Detials</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="my surgery detials.php">My Surgery Detials</a>
+                    <h1>My Surgery Details</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="my surgery Details.php">My Surgery Details</a>
                 </div>
             </div>
         </div>
@@ -76,9 +76,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 <center>
 
-	<h1>My Surgery Detials</h1>
+	<h1>My Surgery Details</h1>
 	<table class="data-table">
-		<caption class="title">My Surgery Detials DB</caption>
+		<caption class="title">My Surgery Details DB</caption>
 		<thead>
 			<tr>
 				<th>NO</th>
