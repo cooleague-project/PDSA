@@ -1,29 +1,55 @@
 <?php
 
-if (isset($_COOKIE['PrivatePageLogin'])) {
+if (isset($_COOKIE['PrivatePageCode'])) {
 		include 'functions.php';
 	$conn=connect();
 
-	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
+	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);
-	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
+	if($usrrow['doctorC']== $_COOKIE['PrivatePageCode']||$usrrow['hospitalC']== $_COOKIE['PrivatePageCode']||$usrrow['labC']== $_COOKIE['PrivatePageCode']){
 
-	$sql = 'SELECT DISTINCT name,field
-		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'" ';
+		$sql = 'SELECT name,field,prescription
+		FROM doctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
 	$doctor=retriveData($sql);
 
-		$sql = 'SELECT DISTINCT name,field
-		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'" ';
+		$sql = 'SELECT name,field,prescription
+		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
 	$Hdoctor=retriveData($sql);
+		$sql = 'SELECT name,byWho,reportLink
+		FROM medicalR   WHERE patientid="'.$_COOKIE['id'].'"';
+
+	$medicalR=retriveData($sql);
+
+
+
+
 	?>
 
 
 
-<!DOCTYPE html>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
 <head>
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -34,7 +60,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>My Doctors</title>
+    <title>See The Patient Profile</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -68,8 +94,8 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>My Doctors</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="My Doctors.php">My Doctors</a>
+                    <h1>See The Patient Profile</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="see the patient profile.php">See The Patient Profile</a>
                 </div>
             </div>
         </div>
@@ -79,19 +105,24 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
     <section class="welcome-area section-padding">
         <div class="container">
 
-<center>
+
+		 <!-- the conetent -->
+
+
+		<center>
 
 	<h1>Doctors</h1>
 	<table class="data-table">
 
 		<thead>
 			<tr>
-			<th>Doctors </th>
+			<th>Doctors Prescriptions</th>
 			</tr>
 			<tr>
 				<th>NO</th>
 				<th>Doctor NAME</th>
 				<th>Doctor Field</th>
+				<th>Doctor Prescriptions</th>
 
 			</tr>
 
@@ -101,16 +132,16 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 
 <?php
+		$no 	= 1;
 
-        $no = 1;
 		while ($Drow = mysqli_fetch_array($doctor))///////$query is the retun from ret function
 		{
-
 
 			echo '<tr>
 					<td>'.$no.'</td>
 					<td>'.$Drow['name'].'</td>
 					<td>'.$Drow['field'].'</td>
+					<td>'.$Drow['prescription'].'</td>
 
 
 
@@ -125,18 +156,19 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 				<thead>
 
 										<tr>
-				<th>Hospital's Doctors </th>
+				<th>Hospital's Doctors Prescriptions</th>
 				</tr>
 				<tr>
 				<th>NO</th>
 				<th>Doctor NAME</th>
 				<th>Doctor Field</th>
+				<th>Doctor Prescriptions</th>
 				</tr>
 		</thead>
-        <tbody>
+            <tbody><tbody>
 		<?php
 
-        $no = 1;
+			$no 	= 1;
 		while ($HDrow = mysqli_fetch_array($Hdoctor))///////$query is the retun from ret function
 		{
 
@@ -144,6 +176,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 					<td>'.$no.'</td>
 					<td>'.$HDrow['name'].'</td>
 					<td>'.$HDrow['field'].'</td>
+					<td>'.$HDrow['prescription'].'</td>
 
 
 
@@ -154,8 +187,51 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 		</tbody>
 		</table>
+		<table class="data-table">
+		<thead>
+							<tr>
 
+				<th>Reports</th>
+				</tr>
+								<tr>
+							<th>NO</th>
+				<th>Report NAME</th>
+				<th>By Who </th>
+				<th>Report Link</th>
+
+				</tr>
+
+		</thead>
+		<tbody>
+
+
+		<?php
+		$no 	= 1;
+
+		while ($medicalrow = mysqli_fetch_array($medicalR))///////$query is the retun from ret function
+		{
+
+			echo '<tr>
+					<td>'.$no.'</td>
+					<td>'.$medicalrow['name'].'</td>
+					<td>'.$medicalrow['byWho'].'</td>
+					<td><a href="/reports/'.$medicalrow['reportLink'].'">Download the report</a></td>
+
+
+				</tr>';
+
+			$no++;
+		}?>
+		</tbody>
+
+	</table>
 </center>
+
+
+		 <!-- the conetent -->
+
+
+
   </div>
     </section>
 	  <!-- Welcome Area End -->
@@ -178,18 +254,17 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 
 
 
-
 <?php
 
 }else{
 
-	  echo "You are not patient";
+	  echo "You are not Doctor";
       exit;
 
    }
 
    }else {
-	echo "You are not patient";
+	echo "You are not Doctor";
       exit;
 
 

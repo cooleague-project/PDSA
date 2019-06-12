@@ -82,7 +82,7 @@
                             </div>
 							
                             
-									<button onclick="location.href='loginp.php';" class="btn">Pationet Sign in</button>
+									<button onclick="location.href='loginp.php';" class="btn">Patient Sign in</button>
 									<button onclick="location.href='loginc.php';" class="btn">Code Sign in</button>
 			                        
 			                  

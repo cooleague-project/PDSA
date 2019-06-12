@@ -136,8 +136,8 @@ echo $statusMsg;
 		<form action="" method="post" enctype="multipart/form-data">
     Select  File to Upload:
 	<div>
-			<label  for="form-username">Reprot Name</label>
-			<input  type="text" name="name" placeholder="Reprot name..." >
+			<label  for="form-username">Report Name</label>
+			<input  type="text" name="name" placeholder="Report name..." >
 	</div>
 	<div>
 			<label  for="form-username">Your Name</label>

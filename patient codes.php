@@ -1,7 +1,4 @@
-
 <?php
-// Include the database configuration file
-
 
 if (isset($_COOKIE['PrivatePageLogin'])) {
 		include 'functions.php';
@@ -12,65 +9,11 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	$usrrow = mysqli_fetch_array($usr);
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
+	$sql = 'SELECT doctorC,labC,hospitalC
+		FROM patient WHERE id="'.$_COOKIE['id'].'"';
 
-$statusMsg = '';
-
-// File upload path
-
-if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
-
-	$targetDir = "reports/";
-$fileName = basename($_FILES["file"]["name"]);
-$targetFilePath = $targetDir . $fileName;
-$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-
-
-
-    // Allow certain file formats
-    $allowTypes = array('jpg','png','jpeg','gif','pdf');
-    if(in_array($fileType, $allowTypes)){
-        // Upload file to server
-        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-            // Insert image file name into database
-			$sql="INSERT into medicalR (name,byWho,reportLink,patientid) VALUES ('".$_POST['name']."','".$_POST['byWho']."','".$fileName."','".$_COOKIE['id']."')";
-
-            $insert = $conn->query($sql);
-            if($insert){
-                $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-            }else{
-                $statusMsg = "File upload failed, please try again.";
-            }
-        }else{
-            $statusMsg = "Sorry, there was an error uploading your file.";
-        }
-    }else{
-        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-    }
-}else{
-    $statusMsg = 'Please select a file to upload.';
-}
-
-// Display status message
-echo $statusMsg;
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	$codes=retriveData($sql);
+	?>
 
 
 
@@ -86,7 +29,7 @@ echo $statusMsg;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>Upload MY Report</title>
+    <title>My Codes</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
@@ -120,8 +63,8 @@ echo $statusMsg;
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Upload MY Report</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="upload my reports.php">Upload MY Report</a>
+                    <h1>My Codes</h1>
+                    <a href="index.html">Home</a> <span>|</span> <a href="Patient codes.php">My Codes</a>
                 </div>
             </div>
         </div>
@@ -131,29 +74,44 @@ echo $statusMsg;
     <section class="welcome-area section-padding">
         <div class="container">
 
+<center>
 
-		 <!-- the conetent -->
+	<h1>My Codes</h1>
+	<table class="data-table">
+		<caption class="title">My Codes DB</caption>
+		<thead>
+			<tr>
+				<th>NO</th>
+				<th>Doctor Code</th>
+				<th>Hospital Doctor Code</th>
+				<th>Lab Code</th>
 
-		<form action="" method="post" enctype="multipart/form-data">
-    Select  File to Upload:
-	<div>
-			<label  for="form-username">Report Name</label>
-			<input  type="text" name="name" placeholder="Report name..." >
-	</div>
-	<div>
-			<label  for="form-username">Your Name</label>
-			<input  type="text" name="byWho" placeholder="Your Name..." >
-	</div>
-    <input type="file" name="file">
-    <input type="submit" name="submit" value="Upload">
-</form>
+			</tr>
+		</thead>
+		<tbody>
+<?php
+		$no 	= 1;
 
-
-
-		 <!-- the conetent -->
-
+		while ($Crow = mysqli_fetch_array($codes))///////$query is the retun from ret function
+		{
 
 
+			echo '<tr>
+					<td>'.$no.'</td>
+					<td>'.$Crow['doctorC'].'</td>
+					<td>'.$Crow['hospitalC'].'</td>
+					<td>'.$Crow['labC'].'</td>
+
+
+
+				</tr>';
+
+			$no++;
+		}?>
+		</tbody>
+
+	</table>
+</center>
   </div>
     </section>
 	  <!-- Welcome Area End -->
@@ -173,6 +131,7 @@ echo $statusMsg;
 
 </body>
 </html>
+
 
 
 

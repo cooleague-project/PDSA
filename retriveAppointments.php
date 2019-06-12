@@ -103,7 +103,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 <?php
 		$no 	= 1;
 
-		while ($Lrow = mysqli_fetch_array($hospitalAppoitment))///////$query is the retun from ret function
+		while ($Lrow = mysqli_fetch_array($appoitment))///////$query is the retun from ret function
 		{
 
 			echo '<tr>
@@ -140,7 +140,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 <?php
 		$no 	= 1;
 
-		while ($Lrow = mysqli_fetch_array($appoitment))///////$query is the retun from ret function
+		while ($Lrow = mysqli_fetch_array($hospitalAppoitment))///////$query is the retun from ret function
 		{
 
 			echo '<tr>
