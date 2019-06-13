@@ -11,7 +11,7 @@
 if(isset($_POST['submit'])){
 
 	include 'functions.php';
-	$conn=connect();
+	
 	$sql="SELECT id,password FROM patient WHERE username='".$_POST['user']."'";
 $usr=retriveData($sql);
 $row = mysqli_fetch_array($usr);

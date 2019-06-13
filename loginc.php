@@ -11,7 +11,7 @@
 if(isset($_POST['submit'])){
 
 	include 'functions.php';
-	$conn=connect();
+	
 	$sql="SELECT id,doctorC,labC,hospitalC FROM patient WHERE doctorC='".$_POST['Code']."' OR labC='".$_POST['Code']."' OR hospitalC='".$_POST['Code']."'" ;
 $usr=retriveData($sql);
 $row = mysqli_fetch_array($usr);

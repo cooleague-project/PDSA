@@ -1,7 +1,7 @@
 <?php
 if (isset($_COOKIE['PrivatePageLogin'])) {
 		include 'functions.php';
-	$conn=connect();
+	//$conn=connect();
 
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=retriveData($sql);

@@ -38,8 +38,6 @@
 include_once 'functions.php';
 
 
-$conn = connect();
-
 
 
 
@@ -79,9 +77,6 @@ $conn = connect();
 
 
 						   include_once 'functions.php';
-
-
-$conn = connect();
 
 
 

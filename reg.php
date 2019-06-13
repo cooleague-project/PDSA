@@ -1,7 +1,7 @@
 <?php
 include 'functions.php';
 
-$conn=connect();
+//$conn=connect();
 
 
 if(isset($_POST['submit'])){

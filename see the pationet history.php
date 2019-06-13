@@ -2,7 +2,7 @@
 
 if (isset($_COOKIE['PrivatePageCode'])) {
 		include 'functions.php';
-	$conn=connect();
+	//$conn=connect();
 
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=retriveData($sql);
