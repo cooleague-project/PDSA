@@ -4,7 +4,8 @@
 if (isset($_COOKIE['PrivatePageCode'])) {
 		include 'functions.php';
 	//$conn=connect();
-
+$instance = Database::getInstance();
+$conn = $instance->getConnection();
 	$sql = "SELECT doctorC,labC,hospitalC FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=retriveData($sql);
 	$usrrow = mysqli_fetch_array($usr);

@@ -5,7 +5,8 @@
 
 if (isset($_COOKIE['PrivatePageLogin'])) {
 		include 'functions.php';
-	$conn=connect();
+	$instance = Database::getInstance();
+$conn = $instance->getConnection();
 
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=retriveData($sql);
