@@ -33,7 +33,7 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         // Upload file to server
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-			$sql="INSERT into medicalR (name,byWho,reportLink,patientid) VALUES ('".$_POST['name']."','".$_POST['byWho']."','".$fileName."','".$_COOKIE['id']."')";
+			$sql="INSERT into medicalr (name,byWho,reportLink,patientid) VALUES ('".$_POST['name']."','".$_POST['byWho']."','".$fileName."','".$_COOKIE['id']."')";
 
             $insert = $conn->query($sql);
             if($insert){

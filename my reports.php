@@ -10,9 +10,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
 	$sql = 'SELECT name,byWho,reportLink
-		FROM medicalR WHERE patientid="'.$_COOKIE['id'].'"';
+		FROM medicalr WHERE patientid="'.$_COOKIE['id'].'"';
 
-	$medicalR=retriveData($sql);
+	$medicalr=retriveData($sql);
 	?>
 
 
@@ -99,7 +99,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		<?php
 		$no 	= 1;
 
-		while ($medicalrow = mysqli_fetch_array($medicalR))///////$query is the retun from ret function
+		while ($medicalrow = mysqli_fetch_array($medicalr))///////$query is the retun from ret function
 		{
 
 			echo '<tr>
