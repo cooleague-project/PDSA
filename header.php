@@ -61,7 +61,7 @@ include_once 'functions.php';
                                 <li><a href="my surgery Details.php">My Surgery Details</a></li>
 								<li><a href="xray.php">XRay Scan</a></li>
 								<li><a href="upload my reports.php">Upload My Reports</a></li>
-								<li><a href="Patient codes.php">Patient Codes</a></li>
+								<li><a href="patient codes.php">Patient Codes</a></li>
 
                             </ul>
                         </li>

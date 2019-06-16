@@ -21,7 +21,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
   $year=$_POST["year"];
   $appointment=concate($day,$month,$year);
 
-  $sql2= "INSERT INTO Hdoctor (name,field,surgeryTestTime,surgeryTests,patientid)
+  $sql2= "INSERT INTO hdoctor (name,field,surgeryTestTime,surgeryTests,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_POST['tests']."','".$_COOKIE['id']."') ";
 			insertData($sql2);
 

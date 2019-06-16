@@ -23,7 +23,7 @@ $appointment=concate($day,$month,$year);
 			insertData($sql2);
 
 			}else if ($usrrow['hospitalC']==$_COOKIE['PrivatePageCode']){
-			$sql2= "INSERT INTO Hdoctor (name,field,appointment,patientid)
+			$sql2= "INSERT INTO hdoctor (name,field,appointment,patientid)
 			VALUES ('".$_POST['name']."','".$_POST['field']."','".$appointment."','".$_COOKIE['id']."') ";
 			insertData($sql2);
 

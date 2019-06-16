@@ -15,13 +15,13 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 	$doctor=retriveData($sql);
 
 		$sql = 'SELECT name,field,prescription
-		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
+		FROM hdoctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
-	$Hdoctor=retriveData($sql);
+	$hdoctor=retriveData($sql);
 		$sql = 'SELECT name,byWho,reportLink
-		FROM medicalR   WHERE patientid="'.$_COOKIE['id'].'"';
+		FROM medicalr   WHERE patientid="'.$_COOKIE['id'].'"';
 
-	$medicalR=retriveData($sql);
+	$medicalr=retriveData($sql);
 
 
 
@@ -169,7 +169,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 		<?php
 
 			$no 	= 1;
-		while ($HDrow = mysqli_fetch_array($Hdoctor))///////$query is the retun from ret function
+		while ($HDrow = mysqli_fetch_array($hdoctor))///////$query is the retun from ret function
 		{
 
 			echo '<tr>
@@ -208,7 +208,7 @@ if (isset($_COOKIE['PrivatePageCode'])) {
 		<?php
 		$no 	= 1;
 
-		while ($medicalrow = mysqli_fetch_array($medicalR))///////$query is the retun from ret function
+		while ($medicalrow = mysqli_fetch_array($medicalr))///////$query is the retun from ret function
 		{
 
 			echo '<tr>

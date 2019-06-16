@@ -10,7 +10,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	if(password_verify($usrrow['password'], $_COOKIE['PrivatePageLogin'])){
 
 	$sql = 'SELECT name,field,surgeryTestTime,surgeryTests
-		FROM Hdoctor WHERE patientid="'.$_COOKIE['id'].'" AND surgeryTestTime IS NOT NULL' ;
+		FROM hdoctor WHERE patientid="'.$_COOKIE['id'].'" AND surgeryTestTime IS NOT NULL' ;
 
 	$doctors=retriveData($sql);
 	?>

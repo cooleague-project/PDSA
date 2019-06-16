@@ -5,7 +5,8 @@
 
 if (isset($_COOKIE['PrivatePageLogin'])) {
 		include 'functions.php';
-	$conn=connect();
+	$instance = Database::getInstance();
+$conn = $instance->getConnection();
 
 	$sql = "SELECT password FROM patient WHERE id ='".$_COOKIE['id']."'";
 	$usr=retriveData($sql);
@@ -32,7 +33,7 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         // Upload file to server
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-			$sql="INSERT into medicalR (name,byWho,reportLink,patientid) VALUES ('".$_POST['name']."','".$_POST['byWho']."','".$fileName."','".$_COOKIE['id']."')";
+			$sql="INSERT into medicalr (name,byWho,reportLink,patientid) VALUES ('".$_POST['name']."','".$_POST['byWho']."','".$fileName."','".$_COOKIE['id']."')";
 
             $insert = $conn->query($sql);
             if($insert){

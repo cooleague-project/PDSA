@@ -15,9 +15,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	$doctor=retriveData($sql);
 
 		$sql = 'SELECT DISTINCT name,field
-		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'" ';
+		FROM hdoctor   WHERE patientid="'.$_COOKIE['id'].'" ';
 
-	$Hdoctor=retriveData($sql);
+	$hdoctor=retriveData($sql);
 	?>
 
 
@@ -137,7 +137,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		<?php
 
         $no = 1;
-		while ($HDrow = mysqli_fetch_array($Hdoctor))///////$query is the retun from ret function
+		while ($HDrow = mysqli_fetch_array($hdoctor))///////$query is the retun from ret function
 		{
 
 			echo '<tr>

@@ -14,9 +14,9 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 	$doctor=retriveData($sql);
 
 		$sql = 'SELECT name,field,prescription
-		FROM Hdoctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
+		FROM hdoctor   WHERE patientid="'.$_COOKIE['id'].'" AND prescription IS NOT NULL';
 
-	$Hdoctor=retriveData($sql);
+	$hdoctor=retriveData($sql);
 	?>
 
 
@@ -145,7 +145,7 @@ if (isset($_COOKIE['PrivatePageLogin'])) {
 		<?php
 
         $no = 1;
-		while ($HDrow = mysqli_fetch_array($Hdoctor))///////$query is the retun from ret function
+		while ($HDrow = mysqli_fetch_array($hdoctor))///////$query is the retun from ret function
 		{
 
 			echo '<tr>
