@@ -35,7 +35,7 @@ $(document).ready(function () {
         // Make prediction by calling api /predict
         $.ajax({
             type: 'POST',
-            url: 'https://oursoftwareengineeringapptest2.herokuapp.com/predict',
+            url: '/predict',
             data: form_data,
             contentType: false,
             cache: false,
